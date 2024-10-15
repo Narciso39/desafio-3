@@ -38,7 +38,7 @@
 .ul li {
     display: flex;
     padding: 10px;
-    gap: 40px;
+    /* gap: 10px; */
 }
 
 .div {
@@ -50,4 +50,5 @@
     align-items: center;
     padding: 10px;
     gap: 50px;
+    cursor: pointer;
 }
