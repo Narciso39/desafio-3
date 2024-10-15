@@ -2,7 +2,8 @@ import styles from "./Footer.module.css";
 import { NavLink } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer>
+    <footer className={styles.footer}>
+      <div className={styles.rowOne}>
       <div className={styles.div}>
         <h2>Furniro</h2>
         <address>
@@ -39,20 +40,21 @@ const Footer = () => {
           <NavLink to="/">Home</NavLink>
         </li>
       </ul>
-      <div className="newsletter">
-        <form>
-          <label>
+      <div >
+        <form className={styles.form}>
+          <label className={styles.input}>
             <span>Newsletter</span>
             <input
               type="email"
               id="email"
               name="email"
-              placeholder="Seu e-mail"
+              placeholder="Enter Your Email Address"
               required
             />
           </label>
           <input type="submit" value="subscribe" />
         </form>
+      </div>
       </div>
     </footer>
   );
