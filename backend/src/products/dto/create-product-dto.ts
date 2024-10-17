@@ -1,4 +1,4 @@
-import { ArrayContains, IsArray, IsBoolean, IsInt, IsNumber, IsString } from 'class-validator';
+import { ArrayContains, IsArray, IsBoolean, IsInt, IsNumber, IsPositive, IsString } from 'class-validator';
 
 export class CreateProductDTO {
   @IsString()
@@ -15,7 +15,8 @@ export class CreateProductDTO {
 
   @IsString()
   large_description: string;
-
+  
+  @IsPositive()
   @IsNumber()
   price: number;
 
