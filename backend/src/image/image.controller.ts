@@ -16,7 +16,7 @@ export class ImageController {
     @Post("/upload")
     @UseInterceptors(FileInterceptor('file', {
         storage: diskStorage({
-            destination: "./uploads",
+            destination: "./../uploads",
             filename: (req, file, cb) => {
                 cb(null, `${file.originalname}`)
             }
@@ -28,7 +28,7 @@ export class ImageController {
 
     @Get("/images")
     getFile(@Res() res: Response, @Body() file: fileParams) {
-        res.sendFile(path.join(__dirname, "./uploads/" + file.fileName));
+        res.sendFile(path.join(__dirname, "../../../uploads/" + file.fileName));
     }
     
 }
