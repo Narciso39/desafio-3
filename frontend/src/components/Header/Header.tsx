@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import React from "react";
 //css
 import styles from "./Header.module.css";
 //logo
@@ -9,7 +10,7 @@ import searchIcon from "../../assets/navbar/searchIcon.svg";
 import userIcon from "../../assets/navbar/userIcon.svg";
 import carIcon from "../../assets/navbar/carIcon.svg";
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <header className={styles.nav}>
       <div className={styles.div}>
