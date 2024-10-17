@@ -26,7 +26,7 @@ export class ImageController {
         return "sucess";
     }
 
-    @Get("/images")
+    @Get()
     getFile(@Res() res: Response, @Body() file: fileParams) {
         res.sendFile(path.join(__dirname, "../../../uploads/" + file.fileName));
     }

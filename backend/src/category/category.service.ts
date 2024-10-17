@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateCategoryDTO } from "./dto/create-category-dto";
+import { UpdatePutDTO } from "./dto/update-put-dto";
 
 @Injectable()
 export class CategoryService {
@@ -24,6 +25,16 @@ export class CategoryService {
         id,
       },
     });
+  }
+  
+  async update(id: number, data: UpdatePutDTO) {
+    await this.exists(id);
+    return this.prisma.category.update({
+        data,
+        where: {
+            id
+        }
+    })
   }
 
   // verifica se o produto existe
