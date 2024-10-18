@@ -1,6 +1,8 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateProductDTO } from "./dto/create-product-dto";
+import { UpdatePatchDTO } from "./dto/update-patch-dto";
+import { UpdatePutDTO } from "./dto/update-put-dto";
 
 @Injectable()
 export class ProductsService {
@@ -35,6 +37,36 @@ export class ProductsService {
         id,
       },
     });
+  }
+
+   
+  async update(id: number, data: UpdatePutDTO) {
+    await this.exists(id);
+    return this.prisma.product.update({
+        data,
+        where: {
+            id
+        }
+    })
+  }
+
+  async updatePatch(id: number, data: UpdatePatchDTO) {
+    await this.exists(id);
+    return this.prisma.product.update({
+      data,
+      where: {
+          id
+      }
+  })
+  }
+
+  async delete(id: number) {
+    await this.exists(id);
+    return this.prisma.product.delete({
+      where: {
+        id
+      }
+    })
   }
 
   // verifica se o produto existe
