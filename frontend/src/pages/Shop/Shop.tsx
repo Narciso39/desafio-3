@@ -1,8 +1,12 @@
-// import React from 'react'
+import React from 'react'
 
-const Shop = () => {
+import InformationBar from "../../components/InformationBar/InformationBar";
+
+const Shop: React.FC = () => {
   return (
-    <div>Shop</div>
+    <div>
+        <InformationBar />
+    </div>
   )
 }
 

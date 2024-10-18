@@ -1,0 +1,31 @@
+.bar {
+    display: flex;
+    height: 270px;
+    margin-top: 40px;
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 0 70px; 
+    background-color: #FAF3EA;
+}
+
+.bar dl {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1; 
+}
+
+.item {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    gap: 10px;
+    flex-grow: 1; 
+    max-width: 200px;
+}
+
+.item h3,
+.item p {
+    margin: 0; 
+    white-space: nowrap; 
+}
