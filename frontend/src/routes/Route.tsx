@@ -9,17 +9,17 @@ import Footer from "../components/footer/Footer";
 export const AppRoutes: React.FC = () => {
     return (
       <>
+       <Header />
         <main>
           <BrowserRouter>  
-          <Header />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/shop" element={<Shop />} />
               <Route path="/product/:id" element={<SingleProduct />} />
             </Routes>
-            <Footer />
           </BrowserRouter>
         </main>
+        <Footer />
         </>
       );
 }
