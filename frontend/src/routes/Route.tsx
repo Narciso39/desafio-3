@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "../pages/Home/Home";
 import Shop from "../pages/Shop/Shop";
 import SingleProduct from "../pages/SingleProduct/SingleProduct";
@@ -14,10 +14,11 @@ export const AppRoutes: React.FC = () => {
         <Header />
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/product/:id" element={<SingleProduct />} />
             <Route path="/category/:id" element={<Category />} />
+            <Route path="/" element={<Navigate to="/home" replace />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

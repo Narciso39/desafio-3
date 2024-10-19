@@ -22,14 +22,14 @@ const CategoryCards: React.FC = () => {
   if (!categories) return <div>Carregando...</div>;
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       {categories.map((cat) => (
         <Link key={cat.id} to={`/category/${cat.id}`} className={styles.card}> {/* Usando Link para redirecionar */}
           <img src={cat.image_link} alt={cat.name} className={styles.image} />
           <h3>{cat.name}</h3>
         </Link>
       ))}
-    </div>
+    </section>
   );
 };
 
