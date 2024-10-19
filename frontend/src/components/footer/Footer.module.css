@@ -111,3 +111,9 @@ li:hover a {
   font-size: 20px; 
   margin-top: 25px;
 }
+
+
+.submit:hover {
+  color: #FFA07A; 
+  border-bottom-color: #FFA07A; 
+}
