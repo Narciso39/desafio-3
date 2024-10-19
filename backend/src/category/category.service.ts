@@ -27,15 +27,15 @@ export class CategoryService {
       },
     });
   }
-  
+
   async update(id: number, data: UpdatePutDTO) {
     await this.exists(id);
     return this.prisma.category.update({
-        data,
-        where: {
-            id
-        }
-    })
+      data,
+      where: {
+        id,
+      },
+    });
   }
 
   async updatePatch(id: number, data: UpdatePatchDTO) {
@@ -43,18 +43,18 @@ export class CategoryService {
     return this.prisma.category.update({
       data,
       where: {
-          id
-      }
-  })
+        id,
+      },
+    });
   }
 
   async delete(id: number) {
     await this.exists(id);
     return this.prisma.category.delete({
       where: {
-        id
-      }
-    })
+        id,
+      },
+    });
   }
 
   // verifica se o produto existe

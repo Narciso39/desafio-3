@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
         </address>
       </div>
       <ul>
-        <span>Links</span>
+        <li><span>Links</span></li>
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
         </li>
       </ul>
       <ul>
-        <span>Help</span>
+        <li><span>Help</span></li>
         <li>
           <NavLink to="/">Payment Options</NavLink>
         </li>

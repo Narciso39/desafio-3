@@ -36,10 +36,26 @@
 }
 
 .ul li {
-    display: flex;
-    padding: 10px;
-    /* gap: 10px; */
+  display: flex;
+  padding: 10px;
+  transition: color 0.3s ease; 
 }
+
+.ul li:hover {
+  color: #E8D7C1;
+}
+
+.ul li a {
+  text-decoration: none; 
+  color: inherit; 
+  transition: color 0.3s ease; 
+}
+
+.ul li:hover a {
+  color: inherit; 
+}
+
+
 
 .div {
     display: flex;

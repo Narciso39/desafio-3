@@ -1,0 +1,33 @@
+.notfound {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* padding: 0px; */
+}
+
+.notfound  h2{
+    font-size: 400px;
+}
+.notfound  h3{
+    font-size: 100px;
+}
+.notfound  p{
+    max-width: 600px;
+    padding: 10px;
+}
+.btn {
+    width: 70px;
+    border: none;
+    border-radius: 100px;
+    background-color: #FAF3EA;
+    transition: all 0.3s ease; 
+    padding: 10px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #E8D7C1; 
+    width: 90px; 
+    transform: scale(1.1); 
+}

@@ -1,0 +1,35 @@
+.productCardContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas */
+    gap: 20px; /* Espaço entre os cartões */
+    margin: 20px; /* Margem externa */
+  }
+  
+  .card {
+    background: #fff; /* Fundo branco para os cartões */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    padding: 16px; /* Espaçamento interno */
+    text-align: center; /* Centraliza texto */
+  }
+  
+  .productName {
+    font-size: 1.2rem; /* Tamanho do texto do nome */
+    margin: 0.5rem 0; /* Margens para espaçamento */
+  }
+  
+  .productCategory {
+    font-size: 1rem; /* Tamanho do texto da categoria */
+    color: #666; /* Cor mais clara para a categoria */
+  }
+  
+  .productPrice {
+    font-size: 1.2rem; /* Tamanho do texto do preço */
+    color: #333; /* Cor do preço */
+  }
+  
+  .oldPrice {
+    text-decoration: line-through; /* Sublinha o preço antigo */
+    color: #999; /* Cor mais clara para o preço antigo */
+  }
+  

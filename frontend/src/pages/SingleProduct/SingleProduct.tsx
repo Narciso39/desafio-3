@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SingleProduct = () => {
+const SingleProduct: React.FC = () => {
   return (
     <div>SingleProduct</div>
   )

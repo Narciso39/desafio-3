@@ -1,74 +1,93 @@
 .footer {
-    display: flex;
-    flex-direction: column;
-    padding: 0 40px;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
 }
 
 .rowOne {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
 }
-
 
 .logo {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 100px;
 }
 .logo h2 {
-    display: flex;
+  display: flex;
 }
 .logo p {
-    display: flex;
-    color: #9F9F9F;
+  display: flex;
+  color: #9f9f9f;
 }
 
 .rowOne ul {
-    display: flex;
-    flex-direction: column;
-    padding: 60px;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 60px;
+  gap: 10px;
 }
 
 .form {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 60px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 60px;
 }
 
 .input {
-    display: flex;
-    flex-direction: column;
-    border: none; 
+  display: flex;
+  flex-direction: column;
+  border: none;
 }
 
 .footer span {
-    font-weight: 500;
-    font-size: 16px;
-    color: #9F9F9F;
+  font-weight: 500;
+  font-size: 16px;
+  color: #9f9f9f;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .container span {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 hr {
-    border: none; 
-    border-top: 2px solid #D9D9D9; 
-    margin: 30px 0; 
+  border: none;
+  border-top: 2px solid #d9d9d9;
+  margin: 30px 0;
 }
 
 .copy {
-    display: flex;
-    align-items: flex-start;
-    font-weight: 400;
-    font-size: 16px;
+  display: flex;
+  align-items: flex-start;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+ul li {
+  /* display: flex;
+    padding: 10px; */
+  transition: color 0.3s ease;
+}
+
+li:hover {
+  color: #e8d7c1;
+}
+
+li a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+li:hover a {
+  color: inherit;
 }
