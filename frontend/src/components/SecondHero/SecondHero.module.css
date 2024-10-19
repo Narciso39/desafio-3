@@ -9,12 +9,12 @@
 } */
 
 .img {
-    position: relative; /* Necessário para posicionar o conteúdo dentro */
+    position: relative;
     width: 100%;
-    height: 400px; /* Defina a altura que você desejar */
-    background-image: url('../../assets/secondHero/hero.jpeg'); /* Caminho para a sua imagem de fundo */
-    background-size: cover; /* Faz a imagem cobrir todo o elemento */
-    background-position: center; /* Centraliza a imagem */
+    height: 400px; 
+    background-image: url('../../assets/secondHero/hero.jpeg'); 
+    background-size: cover; 
+    background-position: center; 
 }
 
 .hero {
@@ -24,12 +24,12 @@
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column; /* Alinha o texto em coluna */
-    align-items: center; /* Centraliza horizontalmente */
-    justify-content: center; /* Centraliza verticalmente */
-    color: #fff; /* Cor do texto */
-    text-align: center; /* Centraliza o texto */
-    backdrop-filter: blur(6px); /* Aplica o efeito de desfoque ao fundo */
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    color: #fff;
+    text-align: center; 
+    backdrop-filter: blur(6px); 
 }
 
 .link {
@@ -43,11 +43,11 @@ h2 {
     font-size: 24px;
     font-weight: 700;
     color:  #000000; 
-    font-size: 48px; /* Ajuste o tamanho do texto conforme necessário */
+    font-size: 48px; 
 }
 
 p {
     font-weight: 800;
 }
-img { /* Adiciona um espaço acima da imagem da seta */
-}
+/* img { 
+} */

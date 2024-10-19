@@ -42,6 +42,7 @@
   display: flex;
   flex-direction: column;
   border: none;
+  margin: 20px;
 }
 
 .footer span {
@@ -55,9 +56,9 @@
   flex-direction: column;
 }
 
-.container span {
-  margin-bottom: 40px;
-}
+/* .container span {
+  margin-bottom: 0px;
+} */
 
 hr {
   border: none;
@@ -90,4 +91,23 @@ li a {
 
 li:hover a {
   color: inherit;
+}
+
+.email {
+  border: none; 
+  border-bottom: 1px solid #000; 
+  outline: none; 
+  padding: 10px; 
+  font-size: 16px; 
+  transition: border-bottom-color 0.3s;
+}
+
+.submit {
+  border: none; 
+  background: none; 
+  color: #000; 
+  text-decoration: underline; 
+  cursor: pointer; 
+  font-size: 20px; 
+  margin-top: 25px;
 }

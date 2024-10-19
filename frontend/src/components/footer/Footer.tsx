@@ -48,6 +48,7 @@ const Footer: React.FC = () => {
         <form className={styles.form}>
           <label className={styles.input}>
             <input
+            className={styles.email}
               type="email"
               id="email"
               name="email"
@@ -55,7 +56,7 @@ const Footer: React.FC = () => {
               required
             />
           </label>
-          <input type="submit" value="subscribe" />
+          <input className={styles.submit} type="submit" value="subscribe" />
         </form>
       </div>
       </div>
