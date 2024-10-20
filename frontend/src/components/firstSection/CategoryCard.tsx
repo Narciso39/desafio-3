@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Importando o Link
 import styles from "./FirstSection.module.css";
 import { useAPICategory } from "../../hooks/useAPICategory";
+import { NavLink } from "react-router-dom";
 
 interface Category {
   id: number;
@@ -24,10 +24,10 @@ const CategoryCards: React.FC = () => {
   return (
     <section className={styles.container}>
       {categories.map((cat) => (
-        <Link key={cat.id} to={`/category/${cat.id}`} className={styles.card}> {/* Usando Link para redirecionar */}
+        <NavLink key={cat.id} to={`/category/${cat.id}`} className={styles.card}> {/* Usando Link para redirecionar */}
           <img src={cat.image_link} alt={cat.name} className={styles.image} />
           <h3>{cat.name}</h3>
-        </Link>
+        </NavLink>
       ))}
     </section>
   );

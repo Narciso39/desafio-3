@@ -6,13 +6,16 @@ import Header from "../components/Header/Header";
 import Footer from "../components/footer/Footer";
 import Category from "../pages/Category/Category";
 import NotFound from "../components/NotFound/NotFound";
+import ScrollToTop from "../hooks/useScroll";
 
 export const AppRoutes: React.FC = () => {
   return (
     <>
+
       <BrowserRouter>
         <Header />
         <main>
+        <ScrollToTop /> 
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/shop" element={<Shop />} />
