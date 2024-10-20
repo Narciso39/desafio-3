@@ -6,8 +6,9 @@ interface Product {
   image: string;
   title: string;
   description: string;
-  price: number; // Adicionando um campo para o preço
-  discountPrice?: number; // Opcional para preço com desconto
+  price: number;
+  discountPrice?: number;
+  isNew?: boolean; // Tornando 'isNew' opcional
 }
 
 interface ProductCardProps {
@@ -16,13 +17,29 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ products, limit }) => {
-  // Limita a exibição dos produtos com base na prop limit
   const displayedProducts = products.slice(0, limit);
+
+  const calculateDiscountPercentage = (price: number, discountPrice?: number) => {
+    if (!discountPrice) return 0;
+    return ((price - discountPrice) / price) * 100;
+  };
 
   return (
     <div className={styles.productCardContainer}>
-      {displayedProducts.map(product => (
-        <div key={product.id} className={styles.card}>
+      {displayedProducts.map((product) => (
+        <article key={product.id} className={styles.card}>
+          <div className={styles.promoBubble}>
+            {/* Exibe a bolha de "NEW" se isNew for verdadeiro */}
+            {product.isNew && (
+              <span className={styles.newBubble}>NEW</span>
+            )}
+            {/* Exibe a bolha de desconto se houver um preço de desconto */}
+            {product.discountPrice && !product.isNew && (
+              <span className={styles.discountBubble}>
+                {calculateDiscountPercentage(product.price, product.discountPrice).toFixed(0)}%
+              </span>
+            )}
+          </div>
           <img src={product.image} alt={product.title} className={styles.productImage} />
           <h3 className={styles.productTitle}>{product.title}</h3>
           <p className={styles.productDescription}>{product.description}</p>
@@ -36,7 +53,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ products, limit }) => {
               <span>${product.price.toFixed(2)}</span>
             )}
           </p>
-        </div>
+        </article>
       ))}
     </div>
   );
