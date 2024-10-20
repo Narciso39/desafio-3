@@ -1,25 +1,37 @@
 .productCardContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 colunas */
-  gap: 20px; /* Espaço entre os cartões */
-  margin: 20px; /* Margem externa */
+  gap: 50px; /* Espaço entre os cartões */
+  margin: 200px; /* Margem externa */
 }
 
 .card {
+  max-width: 285px;
+  height: 446px;
   background: #fff; /* Fundo branco para os cartões */
-  border-radius: 8px; /* Bordas arredondadas */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
-  padding: 16px; /* Espaçamento interno */
+  /* border-radius: 8px; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  */
+  background-color: #F4F5F7;
+  padding: 0px; /* Espaçamento interno */
   text-align: center; /* Centraliza texto */
   position: relative; /* Necessário para posicionamento do .promoBubble */
 }
 
-.productName {
-  font-size: 1.2rem; /* Tamanho do texto do nome */
-  margin: 0.5rem 0; /* Margens para espaçamento */
+.productTitle {
+  display: flex;
+  flex-direction: initial;
+  justify-content: flex-start;
+  font-size: 1.2rem; 
+  margin: 0.5rem 0; 
 }
 
-.productCategory {
+.card h3, p {
+  padding: 0 15px;
+}
+.productDescription {
+  display: flex;
+  flex-direction: initial;
+  justify-content: flex-start;
   font-size: 1rem; /* Tamanho do texto da categoria */
   color: #666; /* Cor mais clara para a categoria */
 }
@@ -27,7 +39,8 @@
 .productPrice {
   display: flex;
   align-items: center;
-  justify-content: center;
+  flex-direction: initial;
+  justify-content: flex-end;
   flex-direction: row-reverse;
   font-size: 1.2rem; 
   color: #333; 
