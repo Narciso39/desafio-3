@@ -1,21 +1,20 @@
 .productCardContainer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 colunas */
-  gap: 50px; /* Espaço entre os cartões */
-  margin: 200px; /* Margem externa */
+  grid-template-columns: repeat(4, 1fr); /* Sempre 4 colunas */
+  gap: 20px; /* Espaço entre os cartões */
+  padding: 50px;
+  justify-items: center; /* Centraliza os cards dentro das colunas */
 }
 
 .card {
-  max-width: 285px;
-  height: 446px;
-  background: #fff; /* Fundo branco para os cartões */
-  /* border-radius: 8px; 
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  */
+  width: 100%; /* Cards ocupam 100% da largura da coluna */
+  max-width: 285px; /* Define o máximo que os cards podem expandir */
+  height: 446px; /* Ajusta a altura de acordo com o conteúdo */
   background-color: #F4F5F7;
-  padding: 0px; /* Espaçamento interno */
   text-align: center; /* Centraliza texto */
-  position: relative; /* Necessário para posicionamento do .promoBubble */
+  position: relative;
 }
+
 
 .productTitle {
   display: flex;
@@ -23,6 +22,7 @@
   justify-content: flex-start;
   font-size: 1.2rem; 
   margin: 0.5rem 0; 
+  margin-top: 20px;
 }
 
 .card h3, p {
