@@ -23,9 +23,17 @@
     flex-grow: 1; 
     max-width: 200px;
 }
+/* 
+.item dd {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+} */
 
 .item h3,
 .item p {
+    padding: 0 1px;
     margin: 0; 
     white-space: nowrap; 
 }
