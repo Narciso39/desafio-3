@@ -1,9 +1,13 @@
 import React from 'react'
+import ProductCard from '../../components/productsCard/ProductCard'
+import SingleProduct from '../../components/SingleProduct/SingleProduct'
 
-const SingleProduct: React.FC = () => {
+const SingleProductPage: React.FC = () => {
   return (
-    <div>SingleProduct</div>
+    <>
+    <SingleProduct />
+    </>
   )
 }
 
-export default SingleProduct
+export default SingleProductPage;
