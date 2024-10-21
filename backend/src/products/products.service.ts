@@ -28,8 +28,17 @@ export class ProductsService {
   }
 
   async list() {
-    return this.prisma.product.findMany();
+    return this.prisma.product.findMany({
+      include: {
+        category: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
   }
+  
 
   async show(id: number) {
     return this.prisma.product.findUnique({

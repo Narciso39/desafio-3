@@ -9,7 +9,7 @@ import { useAPIProductsByCategory } from "../../hooks/useAPIProductsByCategoryID
 const Category: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Extraindo o ID da rota
 
-  const { product: products, error, loading } = useAPIProductsByCategory(id ?? "0"); // Passando id vazio se não existir
+  const { product: products, error, loading } = useAPIProductsByCategory(id ?? "0");
 
   // Mensagens de carregamento e erro
   if (loading) return <p>Loading...</p>;
