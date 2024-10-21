@@ -69,6 +69,13 @@ export class ProductsService {
     })
   }
 
+
+  async getProductsByCategory(categoryId: number) {
+    return this.prisma.product.findMany({
+      where: { category_id: categoryId },
+      include: { category: true }, 
+    });
+  }
   // verifica se o produto existe
   async exists(id: number) {
     if (!(await this.show(id))) {

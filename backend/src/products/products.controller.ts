@@ -12,6 +12,11 @@ export class ProductsController {
   async create(@Body() data: CreateProductDTO) {
     return this.ProductsService.create(data);
   }
+  @Get('category/:categoryId')
+  async getProductsByCategory(@Param('categoryId') categoryId: string) {
+    const id = parseInt(categoryId, 10);
+    return this.ProductsService.getProductsByCategory(id);
+  }
 
   @Get()
   async read() {

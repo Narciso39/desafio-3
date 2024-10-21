@@ -3,12 +3,14 @@ import styles from "./ProductCard.module.css";
 
 interface Product {
   id: number;
-  image: string;
-  title: string;
-  description: string;
-  price: number;
-  discountPrice?: number;
-  isNew?: boolean; // Tornando 'isNew' opcional
+  name: string;
+  image_link: string; 
+  price: string; // Manter como string
+  discount_price?: string; // Manter como string
+  is_new?: boolean;
+  category: {
+    name: string; 
+  };
 }
 
 interface ProductCardProps {
@@ -26,35 +28,39 @@ const ProductCard: React.FC<ProductCardProps> = ({ products, limit }) => {
 
   return (
     <div className={styles.productCardContainer}>
-      {displayedProducts.map((product) => (
-        <article key={product.id} className={styles.card}>
-          <div className={styles.promoBubble}>
-            {/* Exibe a bolha de "NEW" se isNew for verdadeiro */}
-            {product.isNew && (
-              <span className={styles.newBubble}>NEW</span>
-            )}
-            {/* Exibe a bolha de desconto se houver um preço de desconto */}
-            {product.discountPrice && !product.isNew && (
-              <span className={styles.discountBubble}>
-                {calculateDiscountPercentage(product.price, product.discountPrice).toFixed(0)}%
-              </span>
-            )}
-          </div>
-          <img src={product.image} alt={product.title} className={styles.productImage} />
-          <h3 className={styles.productTitle}>{product.title}</h3>
-          <p className={styles.productDescription}>{product.description}</p>
-          <p className={styles.productPrice}>
-            {product.discountPrice ? (
-              <>
-                <span className={styles.oldPrice}>${product.price.toFixed(2)}</span>
-                <span>${product.discountPrice.toFixed(2)}</span>
-              </>
-            ) : (
-              <span>${product.price.toFixed(2)}</span>
-            )}
-          </p>
-        </article>
-      ))}
+      {displayedProducts.map((product) => {
+        // Conversão de strings para números
+        const numericPrice = Number(product.price);
+        const numericDiscountPrice = product.discount_price ? Number(product.discount_price) : undefined;
+
+        return (
+          <article key={product.id} className={styles.card}>
+            <div className={styles.promoBubble}>
+              {product.is_new && <span className={styles.newBubble}>NEW</span>}
+              {numericDiscountPrice && (
+                <span className={styles.discountBubble}>
+                  {calculateDiscountPercentage(numericPrice, numericDiscountPrice).toFixed(0)}%
+                </span>
+              )}
+            </div>
+            <img src={product.image_link} alt={product.name} className={styles.productImage} />
+            <h3 className={styles.productTitle}>{product.name}</h3>
+            <p className={styles.productDescription}>{product.category.name}</p>
+            <p className={styles.productPrice}>
+              {numericDiscountPrice ? (
+                <>
+                  <span className={styles.oldPrice}>
+                    ${numericPrice.toFixed(2)}
+                  </span>
+                  <span>${numericDiscountPrice.toFixed(2)}</span>
+                </>
+              ) : (
+                <span>${numericPrice.toFixed(2)}</span>
+              )}
+            </p>
+          </article>
+        );
+      })}
     </div>
   );
 };
