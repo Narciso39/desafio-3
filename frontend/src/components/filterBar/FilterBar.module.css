@@ -1,0 +1,50 @@
+.filter {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100px;
+    background-color: #F9F1E7;
+    justify-content: space-around;
+}
+
+span, label {
+    font-size: 20px;
+    font-weight: 400;
+}
+dd {
+    font-size: 16px;
+    font-weight: 400;
+}
+.filter dl {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.filter form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+input {
+    border: none;
+}
+.first {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    padding: 12px;
+}
+
+
+.last {
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+    padding: 12px;
+}

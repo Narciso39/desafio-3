@@ -5,6 +5,7 @@ import SecondHero from "../../components/SecondHero/SecondHero";
 import { useAPIGetAllProducts } from "../../hooks/useAPIGetAllProducts";
 import ProductCard from "../../components/productsCard/ProductCard";
 import NextPage from "../../components/NextPageBTN/NextPage";
+import FilterBar from "../../components/filterBar/FilterBar";
 
 const Shop: React.FC = () => {
   
@@ -17,6 +18,7 @@ const Shop: React.FC = () => {
   return (
     <>
       <SecondHero before="Home" actual="Shop" />
+      <FilterBar />
       <ProductCard products={products} limit={16} />
       <NextPage nPage={3} next="next"/>
       <InformationBar />
