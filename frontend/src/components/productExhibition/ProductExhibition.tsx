@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./ProductExhibition.module.css";
 import star from "../../assets/product/starsvg.svg";
 import pipe from "../../assets/pipeBar/pipe.svg";
+import Description from "../Decription/Description";
+
 interface Product {
     id: number;
     name: string;
@@ -37,13 +39,16 @@ const ProductExhibition: React.FC<SingleProductProps> = ({
 
   // console.log(product)
   return (
+    <>
     <section className={styles.container}>
       <div className={styles.lastRow}></div>
       <div className={styles.otherImages}>  <div className={styles.mini}>{product.other_images_link.map((imageLink, index) => (
           <img key={index} src={imageLink} alt={`Image ${index + 1}`} />
         ))}</div></div>
       <div className={styles.image}>
-        <img src={product.image_link} alt={product.name} />
+       <div  className={styles.img}>
+       <img src={product.image_link} alt={product.name}/>
+       </div>
       </div>
       <div className={styles.space}></div>
       <div className={styles.detalhesGrandes}>
@@ -66,8 +71,10 @@ const ProductExhibition: React.FC<SingleProductProps> = ({
             <dd>category: {product?.category?.name || 'Categoria não disponível'}</dd>
             <dd>tags: Sofa, Chair, Home, Shop</dd>
         </dl>
-      </div>
+      </div> 
     </section>
+     <Description description={product.description} largeDescription={product?.large_description} />
+     </>
   );
 };
 

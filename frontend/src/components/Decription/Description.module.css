@@ -1,0 +1,19 @@
+.desc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: -14%;
+
+}
+
+.desc header {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.desc article {
+    display: flex;
+    flex-direction: column;
+}
