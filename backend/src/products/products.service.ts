@@ -85,6 +85,8 @@ export class ProductsService {
       include: { category: true }, 
     });
   }
+
+  p
   // verifica se o produto existe
   async exists(id: number) {
     if (!(await this.show(id))) {

@@ -10,6 +10,7 @@ interface Product {
   description: string;
   large_description: string;
   is_new?: boolean;
+  other_images_link: string[];
   category: {
     name: string;
   };
