@@ -4,6 +4,9 @@ import Bar from "../barSingleProduct/Bar";
 import { useAPIProductsById } from "../../hooks/useAPIProductById";
 import { useParams } from "react-router-dom";
 import ProductExhibition from "../productExhibition/ProductExhibition";
+import Description from "../Decription/Description";
+
+
 
 const SingleProduct: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -16,6 +19,7 @@ const SingleProduct: React.FC = () => {
     <>
       {product && <Bar key={product.id} product={product.name} page="shop"  />}
       {product &&   <ProductExhibition product={product} rating={5}/>}
+      {product &&  <Description description={product.description} largeDescription={product?.large_description} />}
     </>
   );
 };

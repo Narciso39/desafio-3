@@ -36,7 +36,7 @@ const ProductExhibition: React.FC<SingleProductProps> = ({
   ));
   console.log(product)
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <div className={styles.lastRow}></div>
       <div className={styles.otherImages}></div>
       <div className={styles.image}>
@@ -61,10 +61,10 @@ const ProductExhibition: React.FC<SingleProductProps> = ({
         <dl>
             <dd>Sku: {product.sku}</dd>
             <dd>category: {product?.category?.name || 'Categoria não disponível'}</dd>
-            <dd></dd>
+            <dd>tags: Sofa, Chair, Home, Shop</dd>
         </dl>
       </div>
-    </div>
+    </section>
   );
 };
 
