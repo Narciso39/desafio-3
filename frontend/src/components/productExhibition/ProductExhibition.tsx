@@ -3,19 +3,21 @@ import styles from "./ProductExhibition.module.css";
 import star from "../../assets/product/starsvg.svg";
 import pipe from "../../assets/pipeBar/pipe.svg";
 interface Product {
-  id: number;
-  name: string;
-  image_link: string;
-  price: string;
-  discount_price?: string;
-  description: string;
-  large_description: string;
-  other_images_link: string[];
-  is_new?: boolean;
-  category: {
+    id: number;
     name: string;
-  };
-}
+    image_link: string;
+    sku: string;
+    price: string;
+    discount_price?: string;
+    description: string;
+    large_description: string;
+    is_new?: boolean;
+    other_images_link: string[];
+    category: {
+      name: string;
+    };
+  }
+  
 interface SingleProductProps {
   product: Product;
   rating: number;
@@ -32,6 +34,7 @@ const ProductExhibition: React.FC<SingleProductProps> = ({
       <img src={star} alt="star" />
     </span>
   ));
+  console.log(product)
   return (
     <div className={styles.container}>
       <div className={styles.lastRow}></div>
@@ -54,7 +57,13 @@ const ProductExhibition: React.FC<SingleProductProps> = ({
         </div>
         <p>{product.description}</p>
       </div>
-      <div className={styles.detalhesPequenos}>tu</div>
+      <div className={styles.detalhesPequenos}>
+        <dl>
+            <dd>Sku: {product.sku}</dd>
+            <dd>category: {product?.category?.name || 'Categoria não disponível'}</dd>
+            <dd></dd>
+        </dl>
+      </div>
     </div>
   );
 };

@@ -44,6 +44,12 @@ export class ProductsService {
     return this.prisma.product.findUnique({
       where: {
         id,
+      }, include: {
+        category: {
+          select: {
+            name: true,
+          },
+        },
       },
     });
   }
