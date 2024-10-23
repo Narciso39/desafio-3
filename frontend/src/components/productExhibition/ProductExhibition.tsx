@@ -34,11 +34,14 @@ const ProductExhibition: React.FC<SingleProductProps> = ({
       <img src={star} alt="star" />
     </span>
   ));
-  console.log(product)
+
+  // console.log(product)
   return (
     <section className={styles.container}>
       <div className={styles.lastRow}></div>
-      <div className={styles.otherImages}></div>
+      <div className={styles.otherImages}>  <div className={styles.mini}>{product.other_images_link.map((imageLink, index) => (
+          <img key={index} src={imageLink} alt={`Image ${index + 1}`} />
+        ))}</div></div>
       <div className={styles.image}>
         <img src={product.image_link} alt={product.name} />
       </div>

@@ -21,3 +21,9 @@
   .detalhesGrandes { grid-area: detalhes--grandes; }
    
   .detalhesPequenos { grid-area: detalhes-pequenos; }
+
+  .mini {
+    display: flex;
+    flex-direction: column;
+    max-width: 100px;
+  }

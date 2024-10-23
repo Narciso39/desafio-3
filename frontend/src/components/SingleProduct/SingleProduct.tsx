@@ -14,7 +14,8 @@ const SingleProduct: React.FC = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error fetching products: {error.message}</p>;
-
+  
+  
   return (
     <>
       {product && <Bar key={product.id} product={product.name} page="shop"  />}
