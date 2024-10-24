@@ -14,10 +14,12 @@ const Category: React.FC = () => {
   // Mensagens de carregamento e erro
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error fetching products: {error.message}</p>;
-
+  console.log(products);
   return (
     <>
-      <SecondHero before="Home" actual="Category" />
+      {products.map((p) => (
+         <SecondHero key={p.id} before="Home" actual={p.category.name}/>
+      ))}
       <ProductCard products={products} limit={16} />
       <InformationBar />
     </>

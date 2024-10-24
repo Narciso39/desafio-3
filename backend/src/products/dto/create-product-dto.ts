@@ -59,7 +59,7 @@ export class CreateProductDTO {
   @IsArray()
   @IsString({ each: true }) 
   other_images_link: string[];
-
+  
   // Métodos para arredondamento
   get roundedPrice(): number {
     return parseFloat(this.price.toFixed(2));
