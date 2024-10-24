@@ -1,0 +1,19 @@
+.add {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+    border: 1px solid #000; 
+    border-radius: 10px;
+    max-width: 123px;
+    height: 64px;
+}
+
+
+.add button{
+    background-color: #FFFFFF;
+    max-width: 10px;
+    height: 20px;
+    cursor: pointer;
+}

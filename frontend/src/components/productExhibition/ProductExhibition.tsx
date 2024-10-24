@@ -3,6 +3,7 @@ import styles from "./ProductExhibition.module.css";
 import star from "../../assets/product/starsvg.svg";
 import pipe from "../../assets/pipeBar/pipe.svg";
 import Description from "../Decription/Description";
+import AddBtn from "../addBtn/AddBtn";
 
 interface Product {
   id: number;
@@ -57,7 +58,7 @@ const ProductExhibition: React.FC<SingleProductProps> = ({
         </div>
         <div className={styles.space}></div>
         <div className={styles.detalhesGrandes}>
-          <h2>{product.name}</h2>
+          <h2 className={styles.pName}>{product.name}</h2>
           <span className={styles.price} >
             R$:{" "}
             {product &&
@@ -69,6 +70,7 @@ const ProductExhibition: React.FC<SingleProductProps> = ({
             <p>5 Customer Review</p>
           </div>
           <p className={styles.descP} >{product.description}</p>
+          <AddBtn />
         </div>
         <div className={styles.detalhesPequenos}>
           <dl>
