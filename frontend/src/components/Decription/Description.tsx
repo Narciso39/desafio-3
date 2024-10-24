@@ -11,6 +11,7 @@ const Description: React.FC<Content> = ({ description, largeDescription }) => {
 
   return (
     <section className={styles.desc}>
+     <hr className={styles.hr}/>
       <header>
         <h3
           onClick={() => setActiveSection('description')}

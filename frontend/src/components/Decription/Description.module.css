@@ -37,3 +37,9 @@
     font-size: 24px;
     font-weight: 400; /* Deixa o título inativo com peso menor */
 }
+
+.hr {
+    border-color: #D9D9D9;
+    box-sizing:border-box;
+    width:100%;  
+  }
