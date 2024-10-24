@@ -1,18 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
-
-interface Product {
-    id: number;
-    name: string;
-    image_link: string; 
-    price: string;
-    discount_price?: string;
-    is_new?: boolean;
-    category: {
-      name: string; 
-    };
-  }
-  
+import { Product } from "../types/Product";
 
 interface UseAPIProductsByCategoryResult {
   product: Product[];

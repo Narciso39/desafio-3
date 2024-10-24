@@ -1,9 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./NextPage.module.css"
+
+
 interface PaginationProps {
   nPage: number;
-  next: string; // Rota da próxima página
+  next: string; 
 }
 
 const NextPage: React.FC<PaginationProps> = ({ nPage, next }) => {

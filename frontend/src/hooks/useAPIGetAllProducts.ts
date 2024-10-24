@@ -1,17 +1,8 @@
 import api from "../services/api";
 import { useEffect, useState } from "react";
+import { Product } from "../types/Product";
 
-interface Product {
-  id: number;
-  name: string;
-  image_link: string; 
-  price: string;
-  discount_price?: string;
-  is_new?: boolean;
-  category: {
-    name: string; 
-  };
-}
+
 
 interface UseAPIProductsByCategoryResult {
   products: Product[]; // ajustado para corresponder à interface

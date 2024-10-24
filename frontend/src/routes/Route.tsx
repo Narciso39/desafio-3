@@ -12,7 +12,6 @@ import SingleProductPage from "../pages/SingleProduct/SingleProduct";
 export const AppRoutes: React.FC = () => {
   return (
     <>
-
       <BrowserRouter>
         <Header />
         <main>
