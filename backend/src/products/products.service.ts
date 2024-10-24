@@ -44,6 +44,12 @@ export class ProductsService {
     return this.prisma.product.findUnique({
       where: {
         id,
+      }, include: {
+        category: {
+          select: {
+            name: true,
+          },
+        },
       },
     });
   }
@@ -85,6 +91,8 @@ export class ProductsService {
       include: { category: true }, 
     });
   }
+
+  p
   // verifica se o produto existe
   async exists(id: number) {
     if (!(await this.show(id))) {

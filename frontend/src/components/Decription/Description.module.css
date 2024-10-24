@@ -1,0 +1,28 @@
+.desc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: -14%;
+
+}
+
+.desc header {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.desc article {
+    display: flex;
+    flex-direction: column;
+}
+
+.desc article {
+    max-width: 50%;
+    padding: 50px;
+}
+.para {
+    font-weight: 400;
+    color: #9F9F9F;
+}
