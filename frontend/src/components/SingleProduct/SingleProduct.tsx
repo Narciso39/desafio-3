@@ -3,7 +3,7 @@ import Bar from "../barSingleProduct/Bar";
 import { useAPIProductsById } from "../../hooks/useAPIProductById";
 import { useParams } from "react-router-dom";
 import ProductExhibition from "../productExhibition/ProductExhibition";
-import styles from './SingleProduct.module.css'
+
 // import Description from "../Decription/Description";
 
 
