@@ -19,6 +19,7 @@ const SingleProductPage: React.FC = () => {
         <h3 className={styles.htres}>Related Products</h3>
         <ProductCard products={products} limit={4} />
         <ShowMore />
+        <hr className={styles.finalHr}/>
       </section>
     </>
   );

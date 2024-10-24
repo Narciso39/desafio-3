@@ -1,0 +1,37 @@
+.divContainer {
+    display: flex;
+    flex-direction: column;
+}
+.divContainer dl{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.divContainer span {
+    color: #9F9F9F;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.divBtn button {
+   
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #F9F1E7;
+    border: none;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.divBtn button:hover {
+    transform: scale(1.1);  
+}
+
+.divBtn button.selected {
+    background-color: #B88E2F; 
+}
+
+.divBtn button:active {
+    background-color: #B88E2F;  
+}

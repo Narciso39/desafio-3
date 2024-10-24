@@ -1,17 +1,7 @@
 import React from "react";
 import styles from "./ProductCard.module.css";
+import { Product } from "../../types/Product";
 
-interface Product {
-  id: number;
-  name: string;
-  image_link: string; 
-  price: string; // Manter como string
-  discount_price?: string; // Manter como string
-  is_new?: boolean;
-  category: {
-    name: string; 
-  };
-}
 
 interface ProductCardProps {
   products: Product[];

@@ -2,12 +2,8 @@ import React, { useState, useEffect } from "react";
 import styles from "./FirstSection.module.css";
 import { useAPICategory } from "../../hooks/useAPICategory";
 import { NavLink } from "react-router-dom";
+import { Category } from "../../types/Category";
 
-interface Category {
-  id: number;
-  name: string;
-  image_link: string;
-}
 
 const CategoryCards: React.FC = () => {
   const [categories, setCategories] = useState<Category[] | null>(null);

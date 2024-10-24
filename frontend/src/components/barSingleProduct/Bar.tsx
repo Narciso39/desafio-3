@@ -2,10 +2,12 @@ import React from 'react'
 import arrow from "../../assets/secondHero/seta.svg"
 import styles from "./Bar.module.css"
 import pipe from "../../assets/pipeBar/pipe.svg"
+
 interface Content {
     product: string;
     page: string;
 }
+
 const Bar: React.FC<Content> = ({product, page}) => {
   return (
     <section className={styles.sec}>

@@ -13,3 +13,11 @@
     font-size: 48px;
     color: #000;
 }
+
+.finalHr {
+    border-color: #d9d9d9;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 30px;
+  }
+  

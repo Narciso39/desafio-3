@@ -6,6 +6,7 @@ const Footer: React.FC = () => {
   const dataAtual = new Date();
   return (
     <footer className={styles.footer}>
+     
       <div className={styles.rowOne}>
       <div className={styles.logo}>
         <h2>Furniro.</h2>
@@ -60,7 +61,7 @@ const Footer: React.FC = () => {
         </form>
       </div>
       </div>
-      <hr />
+      <hr className={styles.hrDois}/>
       <p className={styles.copy}>{dataAtual.getFullYear()} furino. All rights reserved</p>
     </footer>
   );
