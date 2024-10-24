@@ -4,6 +4,8 @@ import star from "../../assets/product/starsvg.svg";
 import pipe from "../../assets/pipeBar/pipe.svg";
 import Description from "../Decription/Description";
 import AddBtn from "../addBtn/AddBtn";
+import AddProductToCar from "../addProductToCar/AddProductToCar";
+import CompareBtn from "../CompareBtn/CompareBtn";
 
 interface Product {
   id: number;
@@ -70,7 +72,11 @@ const ProductExhibition: React.FC<SingleProductProps> = ({
             <p>5 Customer Review</p>
           </div>
           <p className={styles.descP} >{product.description}</p>
+          <div className={styles.btns}>
           <AddBtn />
+          <AddProductToCar />
+          <CompareBtn />
+          </div>
         </div>
         <div className={styles.detalhesPequenos}>
           <dl>
