@@ -1,35 +1,60 @@
-import { ArrayContains, IsArray, IsBoolean, IsInt, IsNumber, IsPositive, IsString } from 'class-validator';
+import { 
+  ArrayContains, 
+  IsArray, 
+  IsBoolean, 
+  IsInt, 
+  IsNumber, 
+  IsOptional, 
+  IsPositive, 
+  IsString, 
+  MaxLength, 
+  Min, 
+  IsNotEmpty 
+} from 'class-validator';
 
 export class CreateProductDTO {
   @IsString()
+  @IsNotEmpty()
+  @MaxLength(100) 
   name: string;
 
   @IsString()
+  @IsNotEmpty()
+  @MaxLength(50) 
   sku: string;
 
   @IsInt()
   category_id: number;
   
   @IsString()
+  @IsOptional()
+  @MaxLength(250) 
   description: string;
 
   @IsString()
+  @IsOptional()
+  @MaxLength(500) 
   large_description: string;
   
   @IsPositive()
   @IsNumber()
   price: number;
 
+  @IsOptional()
+  @IsPositive()
   @IsNumber()
-  discount_price: number;
+  discount_price?: number;
 
+  @IsOptional()
+  @Min(0)
   @IsNumber()
-  discount_percent: number;
+  discount_percent?: number;
 
   @IsBoolean()
   is_new: boolean;
 
   @IsString()
+  @IsNotEmpty()
   image_link: string;
 
   @IsArray()
