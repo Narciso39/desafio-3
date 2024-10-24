@@ -5,11 +5,14 @@ import ProductCard from "../../components/productsCard/ProductCard";
 import SecondHero from "../../components/SecondHero/SecondHero";
 import { useAPIProductsByCategory } from "../../hooks/useAPIProductsByCategoryID";
 
-
 const Category: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Extraindo o ID da rota
 
-  const { product: products, error, loading } = useAPIProductsByCategory(id ?? "0");
+  const {
+    product: products,
+    error,
+    loading,
+  } = useAPIProductsByCategory(id ?? "0");
 
   // Mensagens de carregamento e erro
   if (loading) return <p>Loading...</p>;
@@ -17,9 +20,14 @@ const Category: React.FC = () => {
   console.log(products);
   return (
     <>
-      {products.map((p) => (
-         <SecondHero key={p.id} before="Home" actual={p.category.name}/>
-      ))}
+      {products.length > 0 && (
+        <SecondHero
+          key={products[0].id}
+          before="Home"
+          actual={products[0].category.name}
+        />
+      )}
+
       <ProductCard products={products} limit={16} />
       <InformationBar />
     </>
