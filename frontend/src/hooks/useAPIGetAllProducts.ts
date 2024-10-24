@@ -19,7 +19,7 @@ export const useAPIGetAllProducts = (): UseAPIProductsByCategoryResult => {
     let isMounted = true;
 
     api
-      .get("/product")
+      .get("/product?page=1&limit=16&order=asc&sortBy=price")
       .then((response) => {
         if (isMounted) {
           setProducts(response.data);

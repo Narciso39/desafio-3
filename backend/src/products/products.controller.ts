@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Put, Query } from "@nestjs/common";
 import { ProductsService } from "./products.service";
 import { CreateProductDTO } from "./dto/create-product-dto";
 import { UpdatePutDTO } from "./dto/update-put-dto";
@@ -18,10 +18,10 @@ export class ProductsController {
     return this.ProductsService.getProductsByCategory(id);
   }
 
-  @Get()
-  async read() {
-    return this.ProductsService.list();
-  }
+  // @Get()
+  // async read() {
+  //   return this.ProductsService.list();
+  // }
 
   @Get(":id")
   async readOne(@Param("id", ParseIntPipe) id: number) {
@@ -41,5 +41,18 @@ export class ProductsController {
   @Delete(":id")
   async delete(@Param("id", ParseIntPipe) id: number) {
     return this.ProductsService.delete(id);
+  }
+
+
+  // paginação
+
+  @Get()
+  async listProducts(
+    @Query('page', ParseIntPipe) page: number = 1, // Parâmetro de página
+    @Query('limit', ParseIntPipe) limit: number = 16, // Parâmetro de limite por página
+    @Query('order') order: 'asc' | 'desc' = 'asc', // Parâmetro de ordenação (asc/desc)
+    @Query('sortBy') sortBy: string = 'price' // Campo para ordenar, por padrão 'price'
+  ) {
+    return this.ProductsService.listPage(page, limit, order, sortBy);
   }
 }
