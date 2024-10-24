@@ -56,6 +56,7 @@
   }
 
 .descP {
+  margin-left: -10px;
   font-size: 13px;
   font-weight: 400;
   color: #000000;
@@ -84,4 +85,10 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+.detalhesGrandes article {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

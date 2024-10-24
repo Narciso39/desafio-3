@@ -48,6 +48,7 @@ const ProductExhibition: React.FC<SingleProductProps> = ({
         </div>
         <div className={styles.space}></div>
         <div className={styles.detalhesGrandes}>
+          <article>
           <h2 className={styles.pName}>{product.name}</h2>
           <span className={styles.price} >
             R$:{" "}
@@ -69,6 +70,7 @@ const ProductExhibition: React.FC<SingleProductProps> = ({
           <CompareBtn />
           </div>
           </div>
+          </article>
         </div>
         <div className={styles.detalhesPequenos}>
           <dl>
