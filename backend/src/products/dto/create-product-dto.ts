@@ -1,5 +1,4 @@
 import { 
-  ArrayContains, 
   IsArray, 
   IsBoolean, 
   IsInt, 
@@ -60,4 +59,13 @@ export class CreateProductDTO {
   @IsArray()
   @IsString({ each: true }) 
   other_images_link: string[];
+
+  // Métodos para arredondamento
+  get roundedPrice(): number {
+    return parseFloat(this.price.toFixed(2));
+  }
+
+  get roundedDiscountPrice(): number | undefined {
+    return this.discount_price ? parseFloat(this.discount_price.toFixed(2)) : undefined;
+  }
 }

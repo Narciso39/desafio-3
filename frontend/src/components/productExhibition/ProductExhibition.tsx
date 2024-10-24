@@ -58,17 +58,17 @@ const ProductExhibition: React.FC<SingleProductProps> = ({
         <div className={styles.space}></div>
         <div className={styles.detalhesGrandes}>
           <h2>{product.name}</h2>
-          <span>
+          <span className={styles.price} >
             R$:{" "}
             {product &&
               (product.discount_price ? product.discount_price : product.price)}
           </span>
-          <div>
+          <div className={styles.starDiv}>
             {stars}
             <img src={pipe} alt="pipe" />
             <p>5 Customer Review</p>
           </div>
-          <p>{product.description}</p>
+          <p className={styles.descP} >{product.description}</p>
         </div>
         <div className={styles.detalhesPequenos}>
           <dl>

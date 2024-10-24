@@ -42,3 +42,27 @@
     max-height: 500px;
     height: 100%;
   }
+
+  .starDiv {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .starDiv p {
+    font-size: 13;
+    font-weight: 400;
+    color: #9F9F9F;
+  }
+
+.descP {
+  font-size: 13px;
+  font-weight: 400;
+  color: #000000;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 500;
+  color: #9F9F9F;
+}

@@ -15,10 +15,10 @@ const Description: React.FC<Content> = ({ description, largeDescription }) => {
       </header>
       <article>
         <section>
-          <p>{description}</p>
+          <p className={styles.para}>{description}</p>
         </section>
         <section>
-          <p>{largeDescription}</p>
+          <p className={styles.para}>{largeDescription}</p>
         </section>
       </article>
     </section>
