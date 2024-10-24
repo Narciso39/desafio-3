@@ -1,0 +1,42 @@
+.color {
+    display: flex;
+    flex-direction: column;
+}
+.color span {
+    color: #9F9F9F;
+    font-size: 14px;
+    font-weight: 400;
+}
+.colorList {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.blue button{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #816DFA;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.black button{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #000000;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.orange button{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #B88E2F;
+    border-radius: 50%;
+    cursor: pointer;
+}

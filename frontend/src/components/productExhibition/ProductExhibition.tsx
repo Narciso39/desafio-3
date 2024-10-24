@@ -7,6 +7,8 @@ import AddBtn from "../addBtn/AddBtn";
 import AddProductToCar from "../addProductToCar/AddProductToCar";
 import CompareBtn from "../CompareBtn/CompareBtn";
 import { Product } from "../../types/Product";
+import SizeBtn from "../sizeBtn/SizeBtn";
+import ColorBtn from "../colorBtn/ColorBtn";
 
 
 interface SingleProductProps {
@@ -58,10 +60,14 @@ const ProductExhibition: React.FC<SingleProductProps> = ({
             <p>5 Customer Review</p>
           </div>
           <p className={styles.descP} >{product.description}</p>
+          <div className={styles.containerBtn}>
+          <SizeBtn />
+          <ColorBtn />
           <div className={styles.btns}>
           <AddBtn />
           <AddProductToCar />
           <CompareBtn />
+          </div>
           </div>
         </div>
         <div className={styles.detalhesPequenos}>

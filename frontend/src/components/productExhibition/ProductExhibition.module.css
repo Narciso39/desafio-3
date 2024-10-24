@@ -79,3 +79,9 @@
   justify-content: center;
   gap: 15px;
 }
+
+.containerBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
