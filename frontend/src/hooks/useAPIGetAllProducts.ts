@@ -10,10 +10,10 @@ interface UseAPIProductsResult {
 }
 
 export const useAPIGetAllProducts = (
-  page: number,
-  limit: number,
-  filters: string[] = [], 
-  sortBy: string = "asc" 
+  page: number = 1,
+  limit: number = 16,
+  order: 'asc' | 'desc' = 'asc',
+  sortBy: string = 'price'
 ): UseAPIProductsResult => {
   const [products, setProducts] = useState<Product[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
@@ -24,7 +24,7 @@ export const useAPIGetAllProducts = (
     let isMounted = true;
 
     api
-      .get(`/product?page=${page}&limit=${limit}&order=asc&sortBy=price`)
+      .get(`/product?page=${page}&limit=${limit}&order=${order}&sortBy=${sortBy}`)
       .then((response) => {
         if (isMounted) {
           setProducts(response.data.products); // Recebe os produtos
@@ -42,7 +42,7 @@ export const useAPIGetAllProducts = (
     return () => {
       isMounted = false;
     };
-  }, [page, limit]);
+  }, [page, limit, order, sortBy]);
 
   return { products, totalCount, error, loading };
 };
