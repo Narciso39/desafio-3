@@ -6,7 +6,10 @@ import { useAPIGetAllProducts } from '../../hooks/useAPIGetAllProducts';
 
 const HomeProducts: React.FC = () => {
 
-  const {products, error, loading } = useAPIGetAllProducts();
+  const page = 1; // Defina o número da página
+  const limit = 8; // Defina o limite de produtos por página
+  const { products, totalCount, error, loading } = useAPIGetAllProducts(page, limit);
+
 
   // Mensagens de carregamento e erro
   if (loading) return <p>Loading...</p>;

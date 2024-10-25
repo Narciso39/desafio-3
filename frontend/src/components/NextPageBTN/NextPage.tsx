@@ -1,25 +1,38 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import styles from "./NextPage.module.css"
-
+import styles from "./NextPage.module.css";
 
 interface PaginationProps {
-  nPage: number;
-  next: string; 
+  nPage: number; // Total de páginas disponíveis
+  currentPage: number; // Página atual
+  onPageChange: (page: number) => void; // Nova prop
+  filters: string[]; // Filtros selecionados
+  limit: number; // Limite de produtos
+  sortBy: string; // Ordenação
 }
 
-const NextPage: React.FC<PaginationProps> = ({ nPage, next }) => {
+const NextPage: React.FC<PaginationProps> = ({ nPage, currentPage, onPageChange, filters, limit, sortBy }) => {
+  const nextPage = currentPage + 1;
+  const prevPage = currentPage - 1;
+
   return (
     <div className={styles.div}>
-      {/* Renderiza os links numerados */}
-      {Array.from({ length: nPage }, (_, index) => (
-        <NavLink key={index} to="#"  className={({ isActive }) => (isActive ? 'selected' : '')}>
-          <button className={styles.button}>{index + 1}</button>
+      {/* Botão para a página anterior */}
+      {currentPage > 1 && (
+        <NavLink to={`/shop?page=${prevPage}&limit=${limit}&sortBy=${sortBy}&filters=${JSON.stringify(filters)}`} onClick={() => onPageChange(prevPage)}>
+          <button className={styles.button}>{prevPage}</button> {/* Exibe o número da página anterior */}
         </NavLink>
-      ))}
+      )}
 
-      {/* Botão para próxima página */}
-      <NavLink to={`/${next}`}><button className={styles.button}>{next}</button></NavLink>
+      {/* Renderiza o número da página atual */}
+      <button className={styles.button} disabled>{currentPage}</button>
+
+      {/* Se houver mais de uma página, renderiza o botão "Next" */}
+      {currentPage < nPage && (
+        <NavLink to={`/shop?page=${nextPage}&limit=${limit}&sortBy=${sortBy}&filters=${JSON.stringify(filters)}`} onClick={() => onPageChange(nextPage)}>
+          <button className={styles.button}>{nextPage}</button> {/* Exibe o número da próxima página */}
+        </NavLink>
+      )}
     </div>
   );
 };

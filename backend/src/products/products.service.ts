@@ -84,19 +84,87 @@ export class ProductsService {
     })
   }
 
-
-  async getProductsByCategory(categoryId: number) {
-    return this.prisma.product.findMany({
-      where: { category_id: categoryId },
-      include: { category: true }, 
-    });
+  async getProductsByCategory(
+    categoryId: number, 
+    page: number = 1, 
+    limit: number = 16, 
+    order: 'asc' | 'desc' = 'asc', 
+    sortBy: string = 'price' // Pode ordenar por outros campos também
+  ) {
+    const skip = (page - 1) * limit;
+  
+    const [products, totalCount] = await Promise.all([
+      this.prisma.product.findMany({
+        where: { category_id: categoryId },
+        skip,
+        take: limit,
+        orderBy: {
+          [sortBy]: order,
+        },
+        include: {
+          category: true, // Inclui informações da categoria
+        },
+      }),
+      this.prisma.product.count({
+        where: { category_id: categoryId },
+      }),
+    ]);
+  
+    const totalPages = Math.ceil(totalCount / limit);
+  
+    return {
+      products,
+      totalPages,
+      currentPage: page,
+      totalCount,
+    };
   }
 
-  p
   // verifica se o produto existe
   async exists(id: number) {
     if (!(await this.show(id))) {
       throw new NotFoundException(`o produto ${id} não existe`);
     }
   }
+
+  // paginação 
+
+  async listPage(
+    page: number = 1, 
+    limit: number = 16, 
+    order: 'asc' | 'desc' = 'asc', 
+    sortBy: string = 'price' // Define a ordenação por preço, nome, ou qualquer outro campo
+  ) {
+    const skip = (page - 1) * limit; // Calcular quantos registros pular
+
+    // Buscar produtos com paginação, ordenação e include para a categoria
+    const [products, totalCount] = await Promise.all([
+      this.prisma.product.findMany({
+        skip,
+        take: limit,
+        orderBy: {
+          [sortBy]: order, // Ordena dinamicamente com base no campo fornecido
+        },
+        include: {
+          category: {
+            select: {
+              name: true,
+            },
+          },
+        },
+      }),
+      this.prisma.product.count(), // Contagem total de produtos
+    ]);
+
+    // Calcular o número total de páginas
+    const totalPages = Math.ceil(totalCount / limit);
+
+    return {
+      products,     // Produtos da página atual
+      totalPages,   // Total de páginas
+      currentPage: page,  // Página atual
+      totalCount    // Total de produtos
+    };
+  }
+  
 }
