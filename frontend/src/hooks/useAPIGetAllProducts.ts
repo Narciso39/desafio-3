@@ -1,4 +1,3 @@
-// src/hooks/useAPIGetAllProducts.ts
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import { Product } from "../types/Product";
@@ -10,7 +9,12 @@ interface UseAPIProductsResult {
   loading: boolean;
 }
 
-export const useAPIGetAllProducts = (page: number, limit: number): UseAPIProductsResult => {
+export const useAPIGetAllProducts = (
+  page: number,
+  limit: number,
+  filters: string[] = [], 
+  sortBy: string = "asc" 
+): UseAPIProductsResult => {
   const [products, setProducts] = useState<Product[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
   const [error, setError] = useState<Error | null>(null);
