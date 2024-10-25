@@ -1,17 +1,18 @@
-import api from "../services/api";
+// src/hooks/useAPIGetAllProducts.ts
 import { useEffect, useState } from "react";
+import api from "../services/api";
 import { Product } from "../types/Product";
 
-
-
-interface UseAPIProductsByCategoryResult {
-  products: Product[]; // ajustado para corresponder à interface
+interface UseAPIProductsResult {
+  products: Product[];
+  totalCount: number; // Para saber o total de produtos
   error: Error | null;
   loading: boolean;
 }
 
-export const useAPIGetAllProducts = (): UseAPIProductsByCategoryResult => {
+export const useAPIGetAllProducts = (page: number, limit: number): UseAPIProductsResult => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [totalCount, setTotalCount] = useState<number>(0);
   const [error, setError] = useState<Error | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -19,10 +20,11 @@ export const useAPIGetAllProducts = (): UseAPIProductsByCategoryResult => {
     let isMounted = true;
 
     api
-      .get("/product?page=1&limit=16&order=asc&sortBy=price")
+      .get(`/product?page=${page}&limit=${limit}&order=asc&sortBy=price`)
       .then((response) => {
         if (isMounted) {
-          setProducts(response.data);
+          setProducts(response.data.products); // Recebe os produtos
+          setTotalCount(response.data.totalCount); // Total de produtos
           setLoading(false);
         }
       })
@@ -36,7 +38,7 @@ export const useAPIGetAllProducts = (): UseAPIProductsByCategoryResult => {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [page, limit]);
 
-  return { products, error, loading };
+  return { products, totalCount, error, loading };
 };

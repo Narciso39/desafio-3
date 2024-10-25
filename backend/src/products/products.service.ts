@@ -84,12 +84,40 @@ export class ProductsService {
     })
   }
 
-
-  async getProductsByCategory(categoryId: number) {
-    return this.prisma.product.findMany({
-      where: { category_id: categoryId },
-      include: { category: true }, 
-    });
+  async getProductsByCategory(
+    categoryId: number, 
+    page: number = 1, 
+    limit: number = 16, 
+    order: 'asc' | 'desc' = 'asc', 
+    sortBy: string = 'price' // Pode ordenar por outros campos também
+  ) {
+    const skip = (page - 1) * limit;
+  
+    const [products, totalCount] = await Promise.all([
+      this.prisma.product.findMany({
+        where: { category_id: categoryId },
+        skip,
+        take: limit,
+        orderBy: {
+          [sortBy]: order,
+        },
+        include: {
+          category: true, // Inclui informações da categoria
+        },
+      }),
+      this.prisma.product.count({
+        where: { category_id: categoryId },
+      }),
+    ]);
+  
+    const totalPages = Math.ceil(totalCount / limit);
+  
+    return {
+      products,
+      totalPages,
+      currentPage: page,
+      totalCount,
+    };
   }
 
   // verifica se o produto existe

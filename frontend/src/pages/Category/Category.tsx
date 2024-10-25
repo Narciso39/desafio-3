@@ -9,15 +9,20 @@ const Category: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Extraindo o ID da rota
 
   const {
-    product: products,
+    products,
     error,
     loading,
-  } = useAPIProductsByCategory(id ?? "0");
+  } = useAPIProductsByCategory(Number(id), 1); // Passando o ID como número
 
   // Mensagens de carregamento e erro
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error fetching products: {error.message}</p>;
-  console.log(products);
+
+  // Verifica se products é um array
+  if (!Array.isArray(products)) {
+    return <p>No products found.</p>;
+  }
+
   return (
     <>
       {products.length > 0 && (

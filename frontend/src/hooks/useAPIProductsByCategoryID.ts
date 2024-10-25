@@ -3,29 +3,46 @@ import api from "../services/api";
 import { Product } from "../types/Product";
 
 interface UseAPIProductsByCategoryResult {
-  product: Product[];
+  products: Product[];
+  totalPages: number;
+  currentPage: number;
   error: Error | null;
   loading: boolean;
 }
 
 export const useAPIProductsByCategory = (
-  categoryId: string
+  categoryId: number,
+  page: number = 1,
+  limit: number = 16,
+  order: 'asc' | 'desc' = 'asc',
+  sortBy: string = 'price'
 ): UseAPIProductsByCategoryResult => {
-  const [product, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [totalPages, setTotalPages] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number>(page);
   const [error, setError] = useState<Error | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    if (!categoryId) return; 
-    
+    if (!categoryId) return;
+
     let isMounted = true;
     setLoading(true);
-  
+
     api
-      .get(`/product/category/${categoryId}`)
+      .get(`/product/category/${categoryId}`, {
+        params: {
+          page: String(page),  // Assegure-se de passar como string
+          limit: String(limit), // Assegure-se de passar como string
+          order,
+          sortBy,
+        },
+      })
       .then((response) => {
         if (isMounted) {
-          setProducts(response.data);
+          setProducts(response.data.products);
+          setTotalPages(response.data.totalPages);
+          setCurrentPage(response.data.currentPage);
           setLoading(false);
         }
       })
@@ -35,11 +52,11 @@ export const useAPIProductsByCategory = (
           setLoading(false);
         }
       });
-  
+
     return () => {
       isMounted = false;
     };
-  }, [categoryId]);
-  
-  return { product, error, loading };
+  }, [categoryId, page, limit, order, sortBy]);
+
+  return { products, totalPages, currentPage, error, loading };
 };
