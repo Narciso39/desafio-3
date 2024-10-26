@@ -53,7 +53,10 @@ const FilterBar: React.FC<Filter> = ({ baseUrl, totalProducts, limit, onPageChan
   return (
     <section >
       <form className={styles.filter}>
-        {isSelectVisible && (
+        <dl>
+          <dd onClick={toggleSelectVisibility}>
+            <img src={filter} alt="Filter" />
+            {isSelectVisible && (
           <div className={styles.checkboxContainer}>
             <input
               type="checkbox"
@@ -86,9 +89,6 @@ const FilterBar: React.FC<Filter> = ({ baseUrl, totalProducts, limit, onPageChan
             <label htmlFor="category">Category</label>
           </div>
         )}
-        <dl>
-          <dd onClick={toggleSelectVisibility}>
-            <img src={filter} alt="Filter" />
           </dd>
           <dd>
             <NavLink

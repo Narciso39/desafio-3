@@ -32,6 +32,7 @@ const NextPage: React.FC<PaginationProps> = ({ baseUrl, nPage, currentPage, onPa
       {currentPage < nPage && (
         <NavLink to={`${baseUrl}?page=${nextPage}&limit=${limit}&sortBy=${sortBy}&filters=${JSON.stringify(filters)}`} onClick={() => onPageChange(nextPage)}>
           <button className={styles.button}>{nextPage}</button> {/* Exibe o número da próxima página */}
+          <button className={styles.buttonN}>Next</button>
         </NavLink>
       )}
     </div>

@@ -35,7 +35,7 @@ const Category: React.FC = () => {
     setOrder(orderValue);
     setSortBy(sortByValue);
   };
-  console.log(numberProducts)
+
   return (
     <>
       {products.length > 0 && (
