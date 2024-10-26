@@ -10,6 +10,7 @@ export type Product = {
     is_new?: boolean;
     other_images_link: string[];
     category: {
+      id: any;
       name: string;
     };
 }

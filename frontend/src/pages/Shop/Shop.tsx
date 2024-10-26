@@ -19,7 +19,7 @@ const Shop: React.FC = () => {
     order,
     sortBy
   );
-
+  const numberProducts =Object.keys(products).length;
   // Mensagens de carregamento e erro
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error fetching products: {error.message}</p>;
@@ -30,8 +30,8 @@ const Shop: React.FC = () => {
     setCurrentPage(page);
   };
 
-  const handleFilterChange = (newLimit: number, sortByValue: string, orderValue: 'asc' | 'desc') => { // Ajuste do tipo para orderValue
-    setCurrentPage(1);// Atualiza o estado de order com o novo valor
+  const handleFilterChange = (newLimit: number, sortByValue: string , orderValue: 'asc' | 'desc') => { 
+    setCurrentPage(1);
     setLimit(newLimit); 
     setOrder(orderValue); 
     setSortBy(sortByValue); 
@@ -42,12 +42,14 @@ const Shop: React.FC = () => {
     <>
       <SecondHero before="Home" actual="Shop" />
       <FilterBar 
+        baseUrl="/shop"
         totalProducts={totalCount} 
-        limit={limit}  
+        limit={numberProducts}  
         onPageChange={handleFilterChange} 
       />
       <ProductCard products={products} limit={limit} />
       <NextPage
+        baseUrl="/shop"
         nPage={totalPages} 
         currentPage={currentPage}
         onPageChange={handlePageChange}

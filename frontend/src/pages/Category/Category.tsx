@@ -5,36 +5,37 @@ import ProductCard from "../../components/productsCard/ProductCard";
 import SecondHero from "../../components/SecondHero/SecondHero";
 import { useAPIProductsByCategory } from "../../hooks/useAPIProductsByCategoryID";
 import NextPage from "../../components/NextPageBTN/NextPage";
+import FilterBar from "../../components/filterBar/FilterBar";
 
 const Category: React.FC = () => {
-  const { id } = useParams<{ id: string }>(); 
-  const [currentPage, setCurrentPage] = useState(1); 
-  const limit = 16; 
+  const { id } = useParams<{ id: string }>();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [order, setOrder] = useState<"asc" | "desc">("asc");
+  const [limit, setLimit] = useState(16);
+  const [sortBy, setSortBy] = useState<string>("name");
 
-  
-  const [filters, setFilters] = useState<string[]>([]);
-  const [sortBy, setSortBy] = useState("asc");
-
-  const {
-    products,
-    totalPages,
-    error,
-    loading,
-  } = useAPIProductsByCategory(Number(id), currentPage); 
-
- 
+  const { products, totalPages, error, loading } = useAPIProductsByCategory(
+    Number(id),
+    currentPage,
+    limit,
+    order,
+    sortBy
+  );
+  const numberProducts =Object.keys(products).length;
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error fetching products: {error.message}</p>;
 
-  
-  if (!Array.isArray(products)) {
-    return <p>No products found.</p>;
-  }
-
   const handlePageChange = (page: number) => {
-    setCurrentPage(page); 
+    setCurrentPage(page);
   };
 
+  const handleFilterChange = (newLimit: number, sortByValue: string, orderValue: "asc" | "desc") => {
+    setCurrentPage(1);
+    setLimit(newLimit);
+    setOrder(orderValue);
+    setSortBy(sortByValue);
+  };
+  console.log(numberProducts)
   return (
     <>
       {products.length > 0 && (
@@ -44,19 +45,22 @@ const Category: React.FC = () => {
           actual={products[0].category.name}
         />
       )}
-
+      <FilterBar 
+        baseUrl={`/category/${products[0].category.id}`}
+        totalProducts={numberProducts} 
+        limit={numberProducts} 
+        onPageChange={handleFilterChange} 
+      />
       <ProductCard products={products} limit={limit} />
-
-      {/* Adiciona o componente NextPage */}
       <NextPage
+        baseUrl={`/category/${products[0].category.id}`}
         nPage={totalPages}
         currentPage={currentPage}
         onPageChange={handlePageChange}
-        filters={filters} 
+        filters={[]} 
         limit={limit}     
         sortBy={sortBy}   
       />
-
       <InformationBar />
     </>
   );

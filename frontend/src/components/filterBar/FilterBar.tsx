@@ -9,37 +9,52 @@ import { NavLink } from "react-router-dom";
 interface Filter {
   totalProducts: number;
   limit: number;
-  // selectedOption: string;
-  // inputValue: number;
-  // event: string | number;
-  onPageChange: (newLimit: number, sortByValue: string, order: "asc" | "desc") => void;
+  onPageChange: (newLimit: number, sortByValue: string , order: "asc" | "desc") => void;
+  baseUrl: string;
 }
 
-const FilterBar: React.FC<Filter> = ({ totalProducts, limit, onPageChange }) => {
-  // Estado para controlar a visibilidade do select
+interface FormValues {
+  selectValue: string;
+  inputOne: string;
+  inputTwo: string;
+}
+
+const FilterBar: React.FC<Filter> = ({ baseUrl, totalProducts, limit, onPageChange }) => {
   const [isSelectVisible, setSelectVisible] = useState(false);
   const [inputValue, setInputValue] = useState("16");
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("name");
+  const [formValues, setFormValues] = useState<FormValues>({
+    selectValue: "asc",
+    inputOne: "asc",
+    inputTwo: "desc",
+  });
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    setSelectedOption((prev) => (prev === value ? "" : value));
+    setSelectedOption((prev) => (prev === value ? "name" : value));
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
 
-  // Função que alterna a visibilidade do select
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormValues((prevValues: FormValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+
   const toggleSelectVisibility = () => {
     setSelectVisible(!isSelectVisible);
   };
 
   return (
-    <section className={styles.filter}>
-      <form>
+    <section >
+      <form className={styles.filter}>
         {isSelectVisible && (
-          <div>
+          <div className={styles.checkboxContainer}>
             <input
               type="checkbox"
               id="name"
@@ -52,13 +67,13 @@ const FilterBar: React.FC<Filter> = ({ totalProducts, limit, onPageChange }) => 
 
             <input
               type="checkbox"
-              id="discont"
+              id="new"
               name="topping"
-              value="discont"
-              checked={selectedOption === "discont"}
+              value="price"
+              checked={selectedOption === "price"}
               onChange={handleCheckboxChange}
             />
-            <label htmlFor="discont">Discont</label>
+            <label htmlFor="discont">price</label>
 
             <input
               type="checkbox"
@@ -77,10 +92,10 @@ const FilterBar: React.FC<Filter> = ({ totalProducts, limit, onPageChange }) => 
           </dd>
           <dd>
             <NavLink
-              to={`/shop?page=1&limit=${inputValue}&order=asc&sortBy=${selectedOption}`}
-              onClick={() => onPageChange(Number(inputValue), selectedOption, 'asc')}
+              to={`${baseUrl}?page=1&limit=${inputValue}&order=${formValues.selectValue}&sortBy=${selectedOption}`}
+              onClick={() => onPageChange(Number(inputValue), selectedOption, formValues.selectValue as "asc" | "desc")}
             >
-              <button className={styles.button}>Show</button>
+              <button type="button" className={styles.button}>Show</button>
             </NavLink>
           </dd>
           <dd>
@@ -105,14 +120,13 @@ const FilterBar: React.FC<Filter> = ({ totalProducts, limit, onPageChange }) => 
           />
         </div>
         <div>
-          <label htmlFor="input2">Short By</label>
-          <input
-            type="text"
-            id="input2"
-            value={selectedOption || "Default"}
-            className={styles.last}
-            readOnly
-          />
+          <label htmlFor="input2">Sort By
+            <select name="selectValue" value={formValues.selectValue} onChange={handleChange}>
+              <option value="default" disabled>Default</option>
+              <option value="asc">ascending</option>
+              <option value="desc">descending</option>
+            </select>
+          </label>
         </div>
       </form>
     </section>
