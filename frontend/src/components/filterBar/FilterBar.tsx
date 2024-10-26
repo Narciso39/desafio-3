@@ -53,7 +53,7 @@ const FilterBar: React.FC<Filter> = ({ baseUrl, totalProducts, limit, onPageChan
   return (
     <section >
       <form className={styles.filter}>
-        <dl>
+        <dl className={styles.filterContent}>
           <dd onClick={toggleSelectVisibility}>
             <img src={filter} alt="Filter" />
             {isSelectVisible && (
@@ -109,7 +109,9 @@ const FilterBar: React.FC<Filter> = ({ baseUrl, totalProducts, limit, onPageChan
           </dd>
           <dd>Showing 1-{limit} of {totalProducts} results</dd>
         </dl>
+        <div className={styles.inputContent}>
         <div>
+        
           <label htmlFor="input1">Show</label>
           <input
             type="text"
@@ -121,12 +123,13 @@ const FilterBar: React.FC<Filter> = ({ baseUrl, totalProducts, limit, onPageChan
         </div>
         <div>
           <label htmlFor="input2">Sort By
-            <select name="selectValue" value={formValues.selectValue} onChange={handleChange}>
+            <select name="selectValue" value={formValues.selectValue} onChange={handleChange}  className={styles.last}>
               <option value="default" disabled>Default</option>
               <option value="asc">ascending</option>
               <option value="desc">descending</option>
             </select>
           </label>
+        </div>
         </div>
       </form>
     </section>

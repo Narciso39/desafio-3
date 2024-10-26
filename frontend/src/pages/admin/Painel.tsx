@@ -40,7 +40,7 @@ const Painel: React.FC = () => {
 
   const {
     submitProduct,
-    loading: submitting,
+    // loading: submitting,
     error,
     success,
   } = useSubmitProduct();
@@ -51,7 +51,6 @@ const Painel: React.FC = () => {
     return <p>Carregando...</p>;
   }
 
-  
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -93,7 +92,6 @@ const Painel: React.FC = () => {
     });
     setShowSuccessMessage(false); // Resetar a mensagem de sucesso
   };
-
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     console.log("Produto a ser enviado:", product); // Adicionando log do produto

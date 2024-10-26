@@ -24,7 +24,7 @@ dd {
     height: 100px;
     padding-left: 30px;
     background-color: #F9F1E7;
-    justify-content: space-around;
+    justify-content: center;
     /* flex-wrap: wrap;  */
 }
 
@@ -49,19 +49,32 @@ dd {
 input {
     border: none;
 } 
+
+.filterContent {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.inputContent {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    padding-left: 30%;
+}
 .first {
     width: 40px;
     height: 40px;
     padding: 12px;
-    margin: 5px;
+    margin: 10px;
 }
 
 
 .last {
-    width: 100px;
-    height: 40px;
+    border: none;
     padding: 12px;
-    margin: 5px;
+    margin: 10px;
 } 
 
 .checkboxContainer {
