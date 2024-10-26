@@ -1,4 +1,4 @@
-.filter {
+/* .filter {
     display: flex;
     align-items: center;
     text-align: center;
@@ -6,7 +6,7 @@
     height: 100px;
     background-color: #F9F1E7;
     justify-content: space-around;
-}
+} */
 
 span, label {
     font-size: 20px;
@@ -16,14 +16,29 @@ dd {
     font-size: 16px;
     font-weight: 400;
 }
+.filter {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100px;
+    padding-left: 30px;
+    background-color: #F9F1E7;
+    justify-content: space-around;
+    /* flex-wrap: wrap;  */
+}
+
 .filter dl {
     display: flex;
     flex-direction: row;
+    padding: 0 10px;
     align-items: center;
     gap: 20px;
+    flex-wrap: wrap; 
 }
 
-.filter form {
+
+ .filter form {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -33,18 +48,29 @@ dd {
 
 input {
     border: none;
-}
+} 
 .first {
     width: 40px;
     height: 40px;
-    margin: 5px;
     padding: 12px;
+    margin: 5px;
 }
 
 
 .last {
     width: 100px;
     height: 40px;
-    margin: 5px;
     padding: 12px;
+    margin: 5px;
+} 
+
+.checkboxContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px; 
+    position: absolute; 
+    z-index: 10; 
+    background-color: #F9F1E7; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
 }

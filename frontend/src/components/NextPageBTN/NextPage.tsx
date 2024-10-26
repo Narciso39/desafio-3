@@ -9,9 +9,10 @@ interface PaginationProps {
   filters: string[]; // Filtros selecionados
   limit: number; // Limite de produtos
   sortBy: string; // Ordenação
+  baseUrl: string;
 }
 
-const NextPage: React.FC<PaginationProps> = ({ nPage, currentPage, onPageChange, filters, limit, sortBy }) => {
+const NextPage: React.FC<PaginationProps> = ({ baseUrl, nPage, currentPage, onPageChange, filters, limit, sortBy }) => {
   const nextPage = currentPage + 1;
   const prevPage = currentPage - 1;
 
@@ -29,7 +30,7 @@ const NextPage: React.FC<PaginationProps> = ({ nPage, currentPage, onPageChange,
 
       {/* Se houver mais de uma página, renderiza o botão "Next" */}
       {currentPage < nPage && (
-        <NavLink to={`/shop?page=${nextPage}&limit=${limit}&sortBy=${sortBy}&filters=${JSON.stringify(filters)}`} onClick={() => onPageChange(nextPage)}>
+        <NavLink to={`${baseUrl}?page=${nextPage}&limit=${limit}&sortBy=${sortBy}&filters=${JSON.stringify(filters)}`} onClick={() => onPageChange(nextPage)}>
           <button className={styles.button}>{nextPage}</button> {/* Exibe o número da próxima página */}
         </NavLink>
       )}
