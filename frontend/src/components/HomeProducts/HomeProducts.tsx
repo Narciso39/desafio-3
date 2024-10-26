@@ -14,12 +14,12 @@ const HomeProducts: React.FC = () => {
   // Mensagens de carregamento e erro
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error fetching products: {error.message}</p>;
-
+  
   return (
     <section className={styles.title}> 
     <h3 className={styles.htres}>Our Products</h3>
     <ProductCard products={products} limit={8} />
-    <ShowMore />
+    <ShowMore use={true} onShowMore={() => console.log("nada")} />
     </section>
   )
 }
