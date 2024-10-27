@@ -1,6 +1,6 @@
-import React from 'react'
-import styles from './FirstSection.module.css'
-import CategoryCards from './CategoryCard';
+import React from "react";
+import styles from "./FirstSection.module.css";
+import CategoryCards from "./CategoryCard";
 
 const FirstSection: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const FirstSection: React.FC = () => {
       <h2>Browse The Range</h2>
       <CategoryCards />
     </section>
-  )
-}
+  );
+};
 
 export default FirstSection;

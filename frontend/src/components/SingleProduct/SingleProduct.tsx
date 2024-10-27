@@ -15,15 +15,17 @@ const SingleProduct: React.FC = () => {
   const [limit, setLimit] = useState(4);
 
   const categoryId = product ? product.category_id : 1;
-  const { products, error: categoryError, loading: categoryLoading } = useAPIProductsByCategory(categoryId, 1, limit);
+  const {
+    products,
+    error: categoryError,
+    loading: categoryLoading,
+  } = useAPIProductsByCategory(categoryId, 1, limit);
 
-  // Salvar posição de rolagem
   const handleShowMore = () => {
     setLimit((prevLimit) => prevLimit + 4);
-    localStorage.setItem("scrollPosition", window.scrollY.toString()); 
+    localStorage.setItem("scrollPosition", window.scrollY.toString());
   };
 
-  // Restaurar posição de rolagem ao carregar novos produtos
   useEffect(() => {
     const savedPosition = localStorage.getItem("scrollPosition");
     if (savedPosition) {
@@ -37,7 +39,6 @@ const SingleProduct: React.FC = () => {
     }
   }, [limit, navigate]);
 
-  // Limpar posição de rolagem ao desmontar o componente
   useEffect(() => {
     return () => {
       localStorage.removeItem("scrollPosition");
@@ -49,7 +50,8 @@ const SingleProduct: React.FC = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error fetching product: {error.message}</p>;
   if (categoryLoading) return <p>Loading related products...</p>;
-  if (categoryError) return <p>Error fetching related products: {categoryError.message}</p>;
+  if (categoryError)
+    return <p>Error fetching related products: {categoryError.message}</p>;
 
   return (
     <>

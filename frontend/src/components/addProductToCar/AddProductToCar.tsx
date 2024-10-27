@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './AddProductToCar.module.css'
+import styles from "./AddProductToCar.module.css";
 const AddProductToCar: React.FC = () => {
   return (
     <>

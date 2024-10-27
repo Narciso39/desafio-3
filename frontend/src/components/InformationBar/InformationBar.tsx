@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./InformationBar.module.css";
-import InfoObjects from "./InfoObject"; 
+import InfoObjects from "./InfoObject";
 
 const InformationBar: React.FC = () => {
   return (

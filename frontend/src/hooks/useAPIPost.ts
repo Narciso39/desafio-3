@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import api from '../services/api'; // Ajuste o caminho se necessário
-import { ProductPost } from '../pages/admin/Painel';
- // Ajuste o caminho se necessário
+import { useState } from "react";
+import api from "../services/api";
+import { ProductPost } from "../types/ProductPost";
 
 const useSubmitProduct = () => {
   const [loading, setLoading] = useState(false);
@@ -14,13 +13,13 @@ const useSubmitProduct = () => {
     setSuccess(false);
 
     try {
-      const response = await api.post('/product', product);
+      const response = await api.post("/product", product);
       if (response.status === 201) {
         setSuccess(true);
       }
     } catch (err: any) {
-      setError(err.response?.data.message || 'Erro ao enviar produto');
-      console.error('Erro:', err);
+      setError(err.response?.data.message || "Erro ao enviar produto");
+      console.error("Erro:", err);
     } finally {
       setLoading(false);
     }

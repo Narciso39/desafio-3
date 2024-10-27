@@ -21,19 +21,18 @@ export class CategoryController {
     return this.CategoryService.show(id);
   }
 
-  @Put(":id")
+  @Put("update/:id")
   async updatePut(@Param("id", ParseIntPipe) id: number, @Body() data: UpdatePutDTO) {
     return this.CategoryService.update(id, data);
   }
 
-  @Patch(":id")
+  @Patch("parcial/:id")
   async updatePatch(@Param("id", ParseIntPipe) id: number, @Body() data: UpdatePatchDTO) {
     return this.CategoryService.updatePatch(id, data);
   }
 
-  @Delete(":id")
+  @Delete("destroy/:id")
   async delete(@Param("id", ParseIntPipe) id: number) {
     return this.CategoryService.delete(id);
   }
-
 }

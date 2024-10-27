@@ -9,11 +9,9 @@ const Home: React.FC = () => {
       <Hero />
       <FirstSection />
       <HomeProducts />
-     
       <InformationBar />
     </>
   );
 };
-
 
 export default Home;

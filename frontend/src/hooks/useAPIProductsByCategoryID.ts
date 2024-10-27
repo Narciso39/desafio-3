@@ -14,8 +14,8 @@ export const useAPIProductsByCategory = (
   categoryId: number,
   page: number = 1,
   limit: number = 16,
-  order: 'asc' | 'desc' = 'asc',
-  sortBy: string = 'price'
+  order: "asc" | "desc" = "asc",
+  sortBy: string = "price"
 ): UseAPIProductsByCategoryResult => {
   const [products, setProducts] = useState<Product[]>([]);
   const [totalPages, setTotalPages] = useState<number>(1);
@@ -32,8 +32,8 @@ export const useAPIProductsByCategory = (
     api
       .get(`/product/category/${categoryId}`, {
         params: {
-          page: String(page),  // Assegure-se de passar como string
-          limit: String(limit), // Assegure-se de passar como string
+          page: String(page),
+          limit: String(limit),
           order,
           sortBy,
         },

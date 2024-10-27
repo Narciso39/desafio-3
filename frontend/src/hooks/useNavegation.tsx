@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const NavigationTracker: React.FC = () => {
   const location = useLocation();
@@ -18,7 +18,7 @@ const NavigationTracker: React.FC = () => {
       <h1>Current Page: {location.pathname}</h1>
       <h2>Previous Page: {previousPage}</h2>
     </div>
-  )
+  );
 };
 
 export default NavigationTracker;

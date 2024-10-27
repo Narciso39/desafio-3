@@ -4,7 +4,7 @@ import { Product } from "../types/Product";
 
 interface UseAPIProductsResult {
   products: Product[];
-  totalCount: number; // Para saber o total de produtos
+  totalCount: number;
   error: Error | null;
   loading: boolean;
 }
@@ -12,8 +12,8 @@ interface UseAPIProductsResult {
 export const useAPIGetAllProducts = (
   page: number = 1,
   limit: number = 16,
-  order: 'asc' | 'desc' = 'asc',
-  sortBy: string = 'price'
+  order: "asc" | "desc" = "asc",
+  sortBy: string = "price"
 ): UseAPIProductsResult => {
   const [products, setProducts] = useState<Product[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
@@ -24,11 +24,13 @@ export const useAPIGetAllProducts = (
     let isMounted = true;
 
     api
-      .get(`/product?page=${page}&limit=${limit}&order=${order}&sortBy=${sortBy}`)
+      .get(
+        `/product?page=${page}&limit=${limit}&order=${order}&sortBy=${sortBy}`
+      )
       .then((response) => {
         if (isMounted) {
-          setProducts(response.data.products); // Recebe os produtos
-          setTotalCount(response.data.totalCount); // Total de produtos
+          setProducts(response.data.products);
+          setTotalCount(response.data.totalCount);
           setLoading(false);
         }
       })

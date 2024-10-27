@@ -5,13 +5,8 @@ import square from "../../assets/filterBar/squaresvg.svg";
 import dimension from "../../assets/filterBar/dimensionsvg.svg";
 import pipe from "../../assets/pipeBar/pipe.svg";
 import { NavLink } from "react-router-dom";
+import { Filter } from "../../types/Filter";
 
-interface Filter {
-  totalProducts: number;
-  limit: number;
-  onPageChange: (newLimit: number, sortByValue: string , order: "asc" | "desc") => void;
-  baseUrl: string;
-}
 
 interface FormValues {
   selectValue: string;
@@ -19,7 +14,12 @@ interface FormValues {
   inputTwo: string;
 }
 
-const FilterBar: React.FC<Filter> = ({ baseUrl, totalProducts, limit, onPageChange }) => {
+const FilterBar: React.FC<Filter> = ({
+  baseUrl,
+  totalProducts,
+  limit,
+  onPageChange,
+}) => {
   const [isSelectVisible, setSelectVisible] = useState(false);
   const [inputValue, setInputValue] = useState("16");
   const [selectedOption, setSelectedOption] = useState("name");
@@ -38,7 +38,9 @@ const FilterBar: React.FC<Filter> = ({ baseUrl, totalProducts, limit, onPageChan
     setInputValue(event.target.value);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+  ) => {
     const { name, value } = e.target;
     setFormValues((prevValues: FormValues) => ({
       ...prevValues,
@@ -51,51 +53,59 @@ const FilterBar: React.FC<Filter> = ({ baseUrl, totalProducts, limit, onPageChan
   };
 
   return (
-    <section >
+    <section>
       <form className={styles.filter}>
         <dl className={styles.filterContent}>
           <dd onClick={toggleSelectVisibility}>
             <img src={filter} alt="Filter" />
             {isSelectVisible && (
-          <div className={styles.checkboxContainer}>
-            <input
-              type="checkbox"
-              id="name"
-              name="topping"
-              value="name"
-              checked={selectedOption === "name"}
-              onChange={handleCheckboxChange}
-            />
-            <label htmlFor="name">Name</label>
+              <div className={styles.checkboxContainer}>
+                <input
+                  type="checkbox"
+                  id="name"
+                  name="topping"
+                  value="name"
+                  checked={selectedOption === "name"}
+                  onChange={handleCheckboxChange}
+                />
+                <label htmlFor="name">Name</label>
 
-            <input
-              type="checkbox"
-              id="new"
-              name="topping"
-              value="price"
-              checked={selectedOption === "price"}
-              onChange={handleCheckboxChange}
-            />
-            <label htmlFor="discont">price</label>
+                <input
+                  type="checkbox"
+                  id="new"
+                  name="topping"
+                  value="price"
+                  checked={selectedOption === "price"}
+                  onChange={handleCheckboxChange}
+                />
+                <label htmlFor="discont">price</label>
 
-            <input
-              type="checkbox"
-              id="category"
-              name="topping"
-              value="category_id"
-              checked={selectedOption === "category_id"}
-              onChange={handleCheckboxChange}
-            />
-            <label htmlFor="category">Category</label>
-          </div>
-        )}
+                <input
+                  type="checkbox"
+                  id="category"
+                  name="topping"
+                  value="category_id"
+                  checked={selectedOption === "category_id"}
+                  onChange={handleCheckboxChange}
+                />
+                <label htmlFor="category">Category</label>
+              </div>
+            )}
           </dd>
           <dd>
             <NavLink
               to={`${baseUrl}?page=1&limit=${inputValue}&order=${formValues.selectValue}&sortBy=${selectedOption}`}
-              onClick={() => onPageChange(Number(inputValue), selectedOption, formValues.selectValue as "asc" | "desc")}
+              onClick={() =>
+                onPageChange(
+                  Number(inputValue),
+                  selectedOption,
+                  formValues.selectValue as "asc" | "desc"
+                )
+              }
             >
-              <button type="button" className={styles.button}>Show</button>
+              <button type="button" className={styles.button}>
+                Show
+              </button>
             </NavLink>
           </dd>
           <dd>
@@ -107,29 +117,38 @@ const FilterBar: React.FC<Filter> = ({ baseUrl, totalProducts, limit, onPageChan
           <dd>
             <img src={pipe} alt="" />
           </dd>
-          <dd>Showing 1-{limit} of {totalProducts} results</dd>
+          <dd>
+            Showing 1-{limit} of {totalProducts} results
+          </dd>
         </dl>
         <div className={styles.inputContent}>
-        <div>
-        
-          <label htmlFor="input1">Show</label>
-          <input
-            type="text"
-            id="input1"
-            value={inputValue}
-            onChange={handleInputChange}
-            className={styles.first}
-          />
-        </div>
-        <div>
-          <label htmlFor="input2">Sort By
-            <select name="selectValue" value={formValues.selectValue} onChange={handleChange}  className={styles.last}>
-              <option value="default" disabled>Default</option>
-              <option value="asc">ascending</option>
-              <option value="desc">descending</option>
-            </select>
-          </label>
-        </div>
+          <div>
+            <label htmlFor="input1">Show</label>
+            <input
+              type="text"
+              id="input1"
+              value={inputValue}
+              onChange={handleInputChange}
+              className={styles.first}
+            />
+          </div>
+          <div>
+            <label htmlFor="input2">
+              Sort By
+              <select
+                name="selectValue"
+                value={formValues.selectValue}
+                onChange={handleChange}
+                className={styles.last}
+              >
+                <option value="default" disabled>
+                  Default
+                </option>
+                <option value="asc">ascending</option>
+                <option value="desc">descending</option>
+              </select>
+            </label>
+          </div>
         </div>
       </form>
     </section>
