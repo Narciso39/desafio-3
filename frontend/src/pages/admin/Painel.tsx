@@ -83,7 +83,7 @@ const Painel: React.FC = () => {
   };
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("Produto a ser enviado:", product);
+    // console.log("Produto a ser enviado:", product);
     await submitProduct(product);
     if (success) {
       resetForm();
