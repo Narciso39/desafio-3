@@ -1,8 +1,9 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { PrismaService } from "src/prisma/prisma.service";
+
 import { CreateProductDTO } from "./dto/create-product-dto";
 import { UpdatePatchDTO } from "./dto/update-patch-dto";
 import { UpdatePutDTO } from "./dto/update-put-dto";
+import { PrismaService } from "../prisma/prisma.service";
 
 @Injectable()
 export class ProductsService {
@@ -40,19 +41,21 @@ export class ProductsService {
   }
 
   async show(id: number) {
+    await this.exists(id); 
     return this.prisma.product.findUnique({
-      where: {
-        id,
-      },
-      include: {
-        category: {
-          select: {
-            name: true,
-          },
+        where: {
+            id,
         },
-      },
+        include: {
+            category: {
+                select: {
+                    name: true,
+                },
+            },
+        },
     });
-  }
+}
+
 
   async update(id: number, data: UpdatePutDTO) {
     await this.exists(id);
@@ -115,10 +118,11 @@ export class ProductsService {
 
   // verifica se o produto existe
   async exists(id: number) {
-    if (!(await this.show(id))) {
-      throw new NotFoundException(`o produto ${id} não existe`);
+    const product = await this.prisma.product.findUnique({ where: { id } });
+    if (!product) {
+        throw new NotFoundException(`o produto ${id} não existe`);
     }
-  }
+}
 
   // paginação
 
