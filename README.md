@@ -34,13 +34,13 @@
 
 2. Instale as dependências para o frontend:
    ```bash
-   cd furniro/frontend
+   cd frontend
    npm install
    ```
 
 3. Instale as dependências para o backend:
    ```bash
-   cd ../backend
+   cd backend
    npm install
    ```
 
