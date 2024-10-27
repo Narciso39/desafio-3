@@ -1,26 +1,22 @@
-import api from "../services/api";
 import { useEffect, useState } from "react";
+import api from "../services/api";
+import { Product } from "../types/Product";
 
-interface Product {
-  id: number;
-  name: string;
-  image_link: string; 
-  price: string;
-  discount_price?: string;
-  is_new?: boolean;
-  category: {
-    name: string; 
-  };
-}
-
-interface UseAPIProductsByCategoryResult {
-  products: Product[]; // ajustado para corresponder à interface
+interface UseAPIProductsResult {
+  products: Product[];
+  totalCount: number;
   error: Error | null;
   loading: boolean;
 }
 
-export const useAPIGetAllProducts = (): UseAPIProductsByCategoryResult => {
+export const useAPIGetAllProducts = (
+  page: number = 1,
+  limit: number = 16,
+  order: "asc" | "desc" = "asc",
+  sortBy: string = "discount_price"
+): UseAPIProductsResult => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [totalCount, setTotalCount] = useState<number>(0);
   const [error, setError] = useState<Error | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -28,10 +24,13 @@ export const useAPIGetAllProducts = (): UseAPIProductsByCategoryResult => {
     let isMounted = true;
 
     api
-      .get("/product")
+      .get(
+        `/product?page=${page}&limit=${limit}&order=${order}&sortBy=${sortBy}`
+      )
       .then((response) => {
         if (isMounted) {
-          setProducts(response.data);
+          setProducts(response.data.products);
+          setTotalCount(response.data.totalCount);
           setLoading(false);
         }
       })
@@ -45,7 +44,7 @@ export const useAPIGetAllProducts = (): UseAPIProductsByCategoryResult => {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [page, limit, order, sortBy]);
 
-  return { products, error, loading };
+  return { products, totalCount, error, loading };
 };

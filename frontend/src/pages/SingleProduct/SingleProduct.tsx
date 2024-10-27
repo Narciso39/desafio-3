@@ -1,13 +1,12 @@
-import React from 'react'
-
-import SingleProduct from '../../components/SingleProduct/SingleProduct'
+import React from "react";
+import SingleProduct from "../../components/SingleProduct/SingleProduct";
 
 const SingleProductPage: React.FC = () => {
   return (
     <>
-    <SingleProduct />
+      <SingleProduct />
     </>
-  )
-}
+  );
+};
 
 export default SingleProductPage;

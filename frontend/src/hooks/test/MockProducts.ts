@@ -5,7 +5,7 @@ const mockProducts = [
     title: "Product 1",
     description: "Description 1",
     isNew: false,
-    price: 29.99
+    price: 29.99,
   },
   {
     id: 2,
@@ -22,11 +22,10 @@ const mockProducts = [
     title: "Product 3",
     description: "Description 3",
     price: 19.99,
-    isNew: true, 
-  }
-  ,
+    isNew: true,
+  },
   {
-    id: 4, 
+    id: 4,
     image: "http://localhost:3000/cadeira.png",
     title: "Product 4",
     description: "Description 4",

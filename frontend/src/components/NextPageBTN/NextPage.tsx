@@ -1,23 +1,48 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import styles from "./NextPage.module.css"
-interface PaginationProps {
-  nPage: number;
-  next: string; // Rota da próxima página
-}
+import styles from "./NextPage.module.css";
+import { Paginate } from "../../types/Paginate";
 
-const NextPage: React.FC<PaginationProps> = ({ nPage, next }) => {
+const NextPage: React.FC<Paginate> = ({
+  baseUrl,
+  nPage,
+  currentPage,
+  onPageChange,
+  filters,
+  limit,
+  sortBy,
+}) => {
+  const nextPage = currentPage + 1;
+  const prevPage = currentPage - 1;
+
   return (
     <div className={styles.div}>
-      {/* Renderiza os links numerados */}
-      {Array.from({ length: nPage }, (_, index) => (
-        <NavLink key={index} to="#"  className={({ isActive }) => (isActive ? 'selected' : '')}>
-          <button>{index + 1}</button>
+      {currentPage > 1 && (
+        <NavLink
+          to={`/shop?page=${prevPage}&limit=${limit}&sortBy=${sortBy}&filters=${JSON.stringify(
+            filters
+          )}`}
+          onClick={() => onPageChange(prevPage)}
+        >
+          <button className={styles.button}>{prevPage}</button>
         </NavLink>
-      ))}
+      )}
 
-      {/* Botão para próxima página */}
-      <NavLink to={`/${next}`}><button>{next}</button></NavLink>
+      <button className={styles.button} disabled>
+        {currentPage}
+      </button>
+
+      {currentPage < nPage && (
+        <NavLink
+          to={`${baseUrl}?page=${nextPage}&limit=${limit}&sortBy=${sortBy}&filters=${JSON.stringify(
+            filters
+          )}`}
+          onClick={() => onPageChange(nextPage)}
+        >
+          <button className={styles.button}>{nextPage}</button>
+          <button className={styles.buttonN}>Next</button>
+        </NavLink>
+      )}
     </div>
   );
 };
