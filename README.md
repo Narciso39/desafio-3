@@ -1,3 +1,4 @@
+
 # Desafio 3 - estágio Compass Uol
 # Furniro
 
@@ -12,8 +13,9 @@
    - [Backend](#backend)
 4. [Scripts](#scripts)
 5. [Estrutura de Pastas](#estrutura-de-pastas)
-6. [Contribuição](#contribuição)
-7. [Licença](#licença)
+6. [Documentação da API](#documentação-da-api)
+7. [Contribuição](#contribuição)
+8. [Licença](#licença)
 
 ## Instalação
 
@@ -130,11 +132,15 @@ desafio-3/
 │   ├── src              # Código-fonte principal da aplicação
 │   └── vite.config.js   # Configuração do Vite
 │
-├── uploads              # Armazenamento de arquivos enviados
+├── uploads              # Armazenamento das fotos 
 │
 └── README.md            # Documentação do projeto
 
 ```
+
+## Documentação da API
+
+A documentação completa das rotas da API está disponível no [Postman Workspace](https://galactic-trinity-719082.postman.co/workspace/My-Workspace~496dd43d-90c9-46c6-8502-cefaeb45e0ab/collection/29747915-427ece4b-5ec0-48b2-8f7f-8cf5fb5ab85d?action=share&creator=29747915), onde você pode explorar cada endpoint, visualizar parâmetros e obter exemplos de respostas.
 
 ## Contribuição
 
