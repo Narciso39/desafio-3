@@ -15,12 +15,15 @@
     padding: 0 20px;
 }
 
-.sec dd {
+.sec a {
     font-size: 16px;
     font-weight: 400;
     color: #9F9F9F;
 }
 
+.sec a:hover {
+    color: #000000; 
+}
 .sec dt {
     font-size: 16px;
     font-weight: 400;

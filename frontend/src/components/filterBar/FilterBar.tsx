@@ -104,7 +104,7 @@ const FilterBar: React.FC<Filter> = ({
               }
             >
               <button type="button" className={styles.button}>
-                Show
+                Filter
               </button>
             </NavLink>
           </dd>
