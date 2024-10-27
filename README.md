@@ -15,7 +15,7 @@
 5. [Estrutura de Pastas](#estrutura-de-pastas)
 6. [Documentação da API](#documentação-da-api)
 7. [Contribuição](#contribuição)
-8. [Licença](#licença)
+
 
 ## Instalação
 
@@ -150,6 +150,5 @@ A documentação completa das rotas da API está disponível no [Postman Workspa
 4. Faça o push para a branch (`git push origin feature/nome-da-feature`).
 5. Abra um Pull Request.
 
-## Licença
 
-Este projeto é licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](./LICENSE) para mais detalhes.
+
