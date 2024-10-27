@@ -1,40 +1,29 @@
-import { 
-  IsArray, 
-  IsBoolean, 
-  IsInt, 
-  IsNumber, 
-  IsOptional, 
-  IsPositive, 
-  IsString, 
-  MaxLength, 
-  Min, 
-  IsNotEmpty 
-} from 'class-validator';
+import { IsArray, IsBoolean, IsInt, IsNumber, IsOptional, IsPositive, IsString, MaxLength, Min, IsNotEmpty } from "class-validator";
 
 export class CreateProductDTO {
   @IsString()
   @IsNotEmpty()
-  @MaxLength(100) 
+  @MaxLength(100)
   name: string;
 
   @IsString()
   @IsNotEmpty()
-  @MaxLength(50) 
+  @MaxLength(50)
   sku: string;
 
   @IsInt()
   category_id: number;
-  
+
   @IsString()
   @IsOptional()
-  @MaxLength(250) 
+  @MaxLength(250)
   description: string;
 
   @IsString()
   @IsOptional()
-  @MaxLength(500) 
+  @MaxLength(500)
   large_description: string;
-  
+
   @IsPositive()
   @IsNumber()
   price: number;
@@ -57,9 +46,9 @@ export class CreateProductDTO {
   image_link: string;
 
   @IsArray()
-  @IsString({ each: true }) 
+  @IsString({ each: true })
   other_images_link: string[];
-  
+
   // Métodos para arredondamento
   get roundedPrice(): number {
     return parseFloat(this.price.toFixed(2));

@@ -1,10 +1,7 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
-//css
 import styles from "./Header.module.css";
-//logo
 import logo from "../../assets/navbar/logo.svg";
-//icones
 import likeIcon from "../../assets/navbar/likeIcon.svg";
 import searchIcon from "../../assets/navbar/searchIcon.svg";
 import userIcon from "../../assets/navbar/userIcon.svg";
@@ -21,7 +18,7 @@ const Header: React.FC = () => {
           <h1>Furniro</h1>
         </NavLink>
       </div>
-      <nav >
+      <nav>
         <ul className={styles.ul}>
           <li>
             <NavLink to="/">Home</NavLink>

@@ -21,7 +21,7 @@ const Category: React.FC = () => {
     order,
     sortBy
   );
-  const numberProducts =Object.keys(products).length;
+  const numberProducts = Object.keys(products).length;
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error fetching products: {error.message}</p>;
 
@@ -29,7 +29,11 @@ const Category: React.FC = () => {
     setCurrentPage(page);
   };
 
-  const handleFilterChange = (newLimit: number, sortByValue: string, orderValue: "asc" | "desc") => {
+  const handleFilterChange = (
+    newLimit: number,
+    sortByValue: string,
+    orderValue: "asc" | "desc"
+  ) => {
     setCurrentPage(1);
     setLimit(newLimit);
     setOrder(orderValue);
@@ -45,11 +49,11 @@ const Category: React.FC = () => {
           actual={products[0].category.name}
         />
       )}
-      <FilterBar 
+      <FilterBar
         baseUrl={`/category/${products[0].category.id}`}
-        totalProducts={numberProducts} 
-        limit={numberProducts} 
-        onPageChange={handleFilterChange} 
+        totalProducts={numberProducts}
+        limit={numberProducts}
+        onPageChange={handleFilterChange}
       />
       <ProductCard products={products} limit={limit} />
       <NextPage
@@ -57,9 +61,9 @@ const Category: React.FC = () => {
         nPage={totalPages}
         currentPage={currentPage}
         onPageChange={handlePageChange}
-        filters={[]} 
-        limit={limit}     
-        sortBy={sortBy}   
+        filters={[]}
+        limit={limit}
+        sortBy={sortBy}
       />
       <InformationBar />
     </>

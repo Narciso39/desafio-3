@@ -3,20 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../../context/FirebaseContext";
 import styles from "./Painel.module.css";
 import useSubmitProduct from "../../hooks/useAPIPost";
-
-export interface ProductPost {
-  name: string;
-  sku: string;
-  category_id: number;
-  description: string;
-  large_description: string;
-  price: number;
-  discount_price: number | null;
-  discount_percent: number | null;
-  is_new: boolean;
-  image_link: string;
-  other_images_link: string[];
-}
+import { ProductPost } from "../../types/ProductPost";
 
 const Painel: React.FC = () => {
   const { user, loading } = useAuth();
@@ -40,7 +27,7 @@ const Painel: React.FC = () => {
 
   const {
     submitProduct,
-    loading: submitting,
+    // loading: submitting,
     error,
     success,
   } = useSubmitProduct();
@@ -51,17 +38,18 @@ const Painel: React.FC = () => {
     return <p>Carregando...</p>;
   }
 
-  
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value, type } = e.target;
 
-    // Convertendo para o tipo correto
     const parsedValue =
       type === "checkbox"
         ? (e.target as HTMLInputElement).checked
-        : name === "category_id" || name === "price" || name === "discount_price" || name === "discount_percent"
+        : name === "category_id" ||
+          name === "price" ||
+          name === "discount_price" ||
+          name === "discount_percent"
         ? parseFloat(value) || null
         : value;
 
@@ -91,18 +79,17 @@ const Painel: React.FC = () => {
       image_link: "",
       other_images_link: ["", ""],
     });
-    setShowSuccessMessage(false); // Resetar a mensagem de sucesso
+    setShowSuccessMessage(false);
   };
-
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("Produto a ser enviado:", product); // Adicionando log do produto
+    console.log("Produto a ser enviado:", product);
     await submitProduct(product);
     if (success) {
       resetForm();
       setShowSuccessMessage(true);
     } else {
-      console.log("Erro ao enviar produto:", error); // Log de erro
+      console.log("Erro ao enviar produto:", error);
     }
   };
   return (
@@ -227,7 +214,11 @@ const Painel: React.FC = () => {
           />
         </div>
       </div>
-      <input type="submit" className={styles.submitBut}  value="Enviar Produto" />
+      <input
+        type="submit"
+        className={styles.submitBut}
+        value="Enviar Produto"
+      />
     </form>
   );
 };

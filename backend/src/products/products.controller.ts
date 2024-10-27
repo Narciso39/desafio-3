@@ -12,18 +12,14 @@ export class ProductsController {
   async create(@Body() data: CreateProductDTO) {
     return this.ProductsService.create(data);
   }
-  // @Get('category/:categoryId')
-  // async getProductsByCategory(@Param('categoryId') categoryId: string) {
-  //   const id = parseInt(categoryId, 10);
-  //   return this.ProductsService.getProductsByCategory(id);
-  // }
+
   @Get("category/:categoryId")
   async getProductsByCategory(
     @Param("categoryId", ParseIntPipe) categoryId: number,
-    @Query("page") page: string = "1", // Recebe o número da página
-    @Query("limit") limit: string = "16", // Recebe o limite de produtos por página
-    @Query("order") order: "asc" | "desc" = "asc", // Recebe a ordem
-    @Query("sortBy") sortBy: string = "price", // Recebe o campo para ordenação
+    @Query("page") page: string = "1",
+    @Query("limit") limit: string = "16",
+    @Query("order") order: "asc" | "desc" = "asc",
+    @Query("sortBy") sortBy: string = "price",
   ) {
     const id = categoryId;
     const pageNumber = parseInt(page, 10);
@@ -32,27 +28,22 @@ export class ProductsController {
     return this.ProductsService.getProductsByCategory(id, pageNumber, limitNumber, order, sortBy);
   }
 
-  // @Get()
-  // async read() {
-  //   return this.ProductsService.list();
-  // }
-
   @Get(":id")
   async readOne(@Param("id", ParseIntPipe) id: number) {
     return this.ProductsService.show(id);
   }
 
-  @Put(":id")
+  @Put("update/:id")
   async updatePut(@Param("id", ParseIntPipe) id: number, @Body() data: UpdatePutDTO) {
     return this.ProductsService.update(id, data);
   }
 
-  @Patch(":id")
+  @Patch("parcial/:id")
   async updatePatch(@Param("id", ParseIntPipe) id: number, @Body() data: UpdatePatchDTO) {
     return this.ProductsService.updatePatch(id, data);
   }
 
-  @Delete(":id")
+  @Delete("destroy/:id")
   async delete(@Param("id", ParseIntPipe) id: number) {
     return this.ProductsService.delete(id);
   }
@@ -61,10 +52,10 @@ export class ProductsController {
 
   @Get()
   async listProducts(
-    @Query("page", ParseIntPipe) page: number = 1, // Parâmetro de página
-    @Query("limit", ParseIntPipe) limit: number = 16, // Parâmetro de limite por página
-    @Query("order") order: "asc" | "desc" = "asc", // Parâmetro de ordenação (asc/desc)
-    @Query("sortBy") sortBy: string = "price", // Campo para ordenar, por padrão 'price'
+    @Query("page", ParseIntPipe) page: number = 1,
+    @Query("limit", ParseIntPipe) limit: number = 16,
+    @Query("order") order: "asc" | "desc" = "asc",
+    @Query("sortBy") sortBy: string = "price",
   ) {
     return this.ProductsService.listPage(page, limit, order, sortBy);
   }

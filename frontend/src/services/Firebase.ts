@@ -14,7 +14,7 @@ const firebaseConfig = {
   storageBucket: "react-auth-96cc9.appspot.com",
   messagingSenderId: "139566169306",
   appId: "1:139566169306:web:8d97bd8e6d4de7ca0f79e3",
-  measurementId: "G-VSLQNHT2L2"
+  measurementId: "G-VSLQNHT2L2",
 };
 
 // Initialize Firebase
