@@ -1,7 +1,7 @@
 # Desafio 3 - estágio Compass Uol
 # Furniro
 
-> Um e-commerce de móveis modernos, com uma API robusta e um frontend responsivo, que oferece uma experiência de compra otimizada e amigável.
+> Um e-commerce de móveis modernos, que oferece uma experiência de compra otimizada e amigável.
 
 ## Índice
 
