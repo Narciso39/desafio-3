@@ -46,7 +46,7 @@
 
 4. Configure o ambiente:
    - Crie um arquivo `.env` no diretório `backend` com as variáveis necessárias, incluindo a string de conexão com o banco de dados e configurações específicas do Firebase.
-   - Configure o Firebase no frontend, adicionando as informações de autenticação no arquivo `firebaseConfig.js`.
+   - Configure o Firebase no frontend, adicionando as informações de autenticação no arquivo `Firebase.ts`.
 
 ## Uso
 
